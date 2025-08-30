@@ -1,13 +1,22 @@
+import LanguageMenu from "@/components/common/language-menu";
 import { ThemeToggle } from "@/components/common/theme-toggel";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
 import { ChartRadialText } from "@/components/ui/radial-chart";
 
+import { useTranslations } from "use-intl";
+
 export default function Homepage() {
+	const t = useTranslations();
+
 	return (
 		<div className="bg-zinc-200 dark:bg-zinc-800 py-10 space-y-5 px-5 font-baloo">
 			<h1 className="text-2xl font-semibold">Fitness App</h1>
+
+			<LanguageMenu />
+			<h2>{t("homepage")}</h2>
 			<ChartRadialText total={6} current={2} />
 
 			<ThemeToggle />

@@ -1,14 +1,17 @@
 import React from "react";
-import { ThemeProvider } from "./theme-provider";
-import ReactQueryProvider from "./react-query-provider";
-import UserProvider from "./user-provider";
+import { ThemeProvider } from "./components/theme-provider";
+import ReactQueryProvider from "./components/react-query-provider";
+import UserProvider from "./components/user-provider";
+import UseIntlProvider from "./components/use-intel-provider";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
 	return (
-		<UserProvider>
+		<UseIntlProvider>
 			<ThemeProvider defaultTheme="dark">
-				<ReactQueryProvider>{children}</ReactQueryProvider>
+				<UserProvider>
+					<ReactQueryProvider>{children}</ReactQueryProvider>
+				</UserProvider>
 			</ThemeProvider>
-		</UserProvider>
+		</UseIntlProvider>
 	);
 }

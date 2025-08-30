@@ -1,4 +1,4 @@
-import { userContext } from "@/components/providers/user-provider";
+import { userContext } from "@/components/providers/components/user-provider";
 import React, { useContext } from "react";
 import { Navigate } from "react-router-dom";
 

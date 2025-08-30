@@ -2,12 +2,12 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import vector from "../../assets/images/Vector.svg";
+import vector from "@assets/images/Vector.svg";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
 	[
-		"inline-flex items-center font-semibold  font-[16px] justify-center  rounded-full transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 cursor-pointer aria-invalid:border-destructive",
+		"inline-flex items-center font-semibold  font-[16px] justify-center  rounded-full transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 cursor-pointer aria-invalid:border-destructive",
 		"font-rubik text-zinc-50  ",
 	],
 	{
@@ -21,8 +21,7 @@ const buttonVariants = cva(
 				outline:
 					"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
 
-				ghost:
-					"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+				ghost: "hover:bg-accent dark:hover:bg-zinc-700",
 				link: "text-primary underline-offset-4 hover:underline",
 			},
 			size: {
@@ -44,6 +43,7 @@ function Button({
 	variant,
 	size,
 	icon = true,
+
 	asChild = false,
 	...props
 }: React.ComponentProps<"button"> &
