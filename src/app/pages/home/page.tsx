@@ -3,6 +3,7 @@ import { ThemeToggle } from "@/components/common/theme-toggel";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+
 import { PasswordInput } from "@/components/ui/password-input";
 import { ChartRadialText } from "@/components/ui/radial-chart";
 
@@ -16,13 +17,16 @@ export default function Homepage() {
 			<h1 className="text-2xl font-semibold">Fitness App</h1>
 
 			<LanguageMenu />
-			<h2>{t("homepage")}</h2>
+			<h2 className="text-2xl w-fit mx-auto text-main font-bold">
+				{t("homepage")}
+			</h2>
 			<ChartRadialText total={6} current={2} />
 
 			<ThemeToggle />
 			<Input placeholder="First Name" className="w-1/2" />
 			<Input type="email" placeholder="email" className="w-1/2" />
 			<PasswordInput placeholder="Password" className="w-1/2" />
+
 			<Button className="w-56">Button</Button>
 
 			<Button variant={"secondary"} className="w-1/2">
