@@ -1,20 +1,31 @@
-"use client";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, User } from "lucide-react";
+
 import logo from "../../../../public/fit 1.png";
+import { UserDropdownMenu } from "./_components/user-dropdown-menu";
+import { Link } from "react-router-dom";
+import MobileMenueButton from "./_components/mobile-menue-button";
+import { navigationItems } from "./_components/navigation-data";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navigationItems = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#" },
-    { name: "Classes", href: "#" },
-    { name: "Healthy", href: "#" },
-  ];
+  const token = true;
+
+  // Close menu when screen size grows larger than md breakpoint
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        // md breakpoint is 768px
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <header className="w-full text-black sticky top-0 z-50">
@@ -32,82 +43,34 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navigationItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
-                className="text-gray-700 hover:text-orange-500 dark:text-white dark:hover:text-orange-500  font-bold text-xl transition-colors duration-200"
+                to={item.href}
+                className="text-gray-700 hover:text-orange-500 dark:text-white dark:hover:text-orange-500 font-bold text-xl transition-colors duration-200"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Desktop Auth Buttons */}
-          <div className="hidden md:flex gap-2 items-center space-x-4">
-            <Button>LOGIN</Button>
-            <Button variant={"secondary"}>SIGN UP</Button>
-          </div>
+          {!token ? (
+            <div className="hidden md:flex gap-2 items-center space-x-4">
+              <Button>LOGIN</Button>
+              <Button variant={"secondary"}>SIGN UP</Button>
+            </div>
+          ) : (
+            <UserDropdownMenu
+              userEmail="john.doe@example.com"
+              userName="John Doe"
+            />
+          )}
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <Sheet
-              open={isOpen}
-              onOpenChange={setIsOpen}
-            >
-              <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                >
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent
-                side="right"
-                className="w-[300px] sm:w-[400px]"
-              >
-                <div className="flex flex-col space-y-6 mt-6">
-                  {/* Mobile Navigation */}
-                  <nav className="flex flex-col space-y-4">
-                    {navigationItems.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="text-lg font-medium text-gray-700 hover:text-orange-500 transition-colors duration-200"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </nav>
-
-                  {/* Mobile Auth Buttons */}
-                  <div className="flex flex-col space-y-3 pt-6 border-t">
-                    <Button
-                      variant="outline"
-                      className="border-orange-500 text-orange-500 hover:bg-orange-50 font-medium w-full bg-transparent"
-                    >
-                      LOGIN
-                    </Button>
-                    <Button className="bg-orange-500 hover:bg-orange-600 text-white font-medium w-full">
-                      SIGN UP
-                    </Button>
-                  </div>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
-
-          {/* Simple Mobile User Icon (Alternative) */}
-          <div className="md:hidden hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="bg-orange-500 hover:bg-orange-600 text-white rounded-full"
-            >
-              <User className="h-5 w-5" />
-            </Button>
-          </div>
+          <MobileMenueButton
+            isOpen={isOpen}
+            handleOpen={setIsOpen}
+          />
         </div>
       </div>
     </header>

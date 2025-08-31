@@ -1,5 +1,4 @@
 import LanguageMenu from "@/components/common/language-menu";
-import { ThemeToggle } from "@/components/common/theme-toggel";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,7 +24,6 @@ export default function Homepage() {
         current={2}
       />
 
-      <ThemeToggle />
       <Input
         placeholder="First Name"
         className="w-1/2"
