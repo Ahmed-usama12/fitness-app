@@ -32,6 +32,7 @@ export const userMenuItems = [
  * Mobile user menu items (includes Gmail option)
  * Extended menu for mobile users with additional options
  */
+
 export const mobileUserMenuItems = [
   {
     name: "gmail",
