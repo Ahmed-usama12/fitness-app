@@ -38,6 +38,7 @@ export default function AppRouter() {
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
         { path: "forgot-password", element: <ForgotPassword /> },
+        { path: "otp", element: <OTP /> },
       ],
     },
   ]);
