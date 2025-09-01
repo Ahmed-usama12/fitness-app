@@ -1,3 +1,10 @@
 {
-	"homepage": "Hello world!"
+	"homepage": "Hello world!",
+	    "footer": {
+        "Slogan1":"Push harder, go further.",
+        "Slogan2":"fitness journey starts today!",
+		"contact":"contact us",
+		"GymTiming": "our gym timing",
+		"OurLocation": "our location"
+    }
 }

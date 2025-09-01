@@ -1,3 +1,4 @@
+import Footer from "@/components/layout/footer";
 import { Outlet } from "react-router-dom";
 
 export default function MainLayout() {
@@ -5,7 +6,7 @@ export default function MainLayout() {
 		<>
 			<h1>header</h1>
 			<Outlet />
-			<h1>footer</h1>
+			<Footer/>
 		</>
 	);
 }
