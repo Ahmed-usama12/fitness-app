@@ -9,7 +9,6 @@ import Homepage from "@/app/pages/home/page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedRoute from "./protected-route";
 import ForgotPassword from "@/app/pages/auth/forgot-password/forgot-password";
-import OTP from "@/app/pages/auth/forgot-password/otp";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
