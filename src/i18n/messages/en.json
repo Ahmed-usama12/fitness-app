@@ -1,3 +1,30 @@
 {
-	"homepage": "Hello world!"
+  "homepage": "Hello world!",
+  "email-empty": "The part before @ cannot be empty",
+  "long-email": "The part after @ must be at most 64 characters long",
+  "login": "LOGIN",
+  "signup": "SIGN UP",
+  "logo": "Fitness App Logo",
+  "home": "Home",
+  "about": "About",
+  "classes": "Classes",
+  "healthy": "Healthy",
+  "profile": "Profile",
+  "settings": "Settings",
+  "gmail": "Gmail",
+  "fitnessApp": "Fitness App",
+  "firstName": "First Name",
+  "email": "Email",
+  "password": "Password",
+  "button": "Button",
+  "aboutDescription": "Learn more about our fitness application and mission.",
+  "classesDescription": "Explore our wide range of fitness classes and training sessions.",
+  "healthyDescription": "Discover health tips and wellness information to improve your lifestyle.",
+  "loginDescription": "Sign in to your account to access your fitness journey.",
+  "signupDescription": "Create a new account to start your fitness journey with us.",
+  "photo": "Photo",
+  "english": "English",
+  "arabic": "العربية",
+  "toggleTheme": "Toggle theme"
+
 }
