@@ -10,6 +10,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedRoute from "./protected-route";
 import ForgotPassword from "@/app/pages/auth/forgot-password/forgot-password";
 import OTP from "@/app/pages/auth/forgot-password/otp";
+import NewPassword from "@/app/pages/auth/forgot-password/new-password";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
@@ -39,6 +40,7 @@ export default function AppRouter() {
         { path: "register", element: <Register /> },
         { path: "forgot-password", element: <ForgotPassword /> },
         { path: "otp", element: <OTP /> },
+        { path: "new-password", element: <NewPassword /> },
       ],
     },
   ]);
