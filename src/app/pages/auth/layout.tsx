@@ -1,11 +1,10 @@
 import { Outlet } from "react-router-dom";
 import fitnessLogo from "@/assets/images/3f1b97ac1d19ded33c496670ee9f22167b9fd16b.png"
 import image from "@/assets/images/83d952cdb4d1adb0a7c4f122368997d2c0e6ddf5.png"
-import bgImage from "@/assets/images/1c954dadbf9e7afe8a506781f826bc185c5e4deb.png"
 
 export default function AuthLayout() {
 	return (
-		<main className="relative min-h-screen grid grid-cols-1 md:grid-cols-2 bg-center bg-cover" style={{ backgroundImage: `url(${bgImage})` }} >
+		<main className="relative min-h-screen grid grid-cols-1 md:grid-cols-2 bg-center bg-cover bg-[url('@/assets/images/1c954dadbf9e7afe8a506781f826bc185c5e4deb.png')]" >
 			{/*overlay*/}
 			<div className="absolute inset-0 bg-[rgba(36,36,36,0.6)] backdrop-blur-[47px]" />
 
