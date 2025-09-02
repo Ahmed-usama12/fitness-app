@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
-import logo from "../../../../public/imgs/fit 1.png";
+import logo from "@/assets/images/fit 1.png";
 import { UserDropdownMenu } from "./_components/user-dropdown-menu";
 import { Link } from "react-router-dom";
 import MobileMenueButton from "./_components/mobile-menue-button";
