@@ -8,10 +8,10 @@ import Healthy from "@/app/pages/healthy/page";
 import Homepage from "@/app/pages/home/page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedRoute from "./protected-route";
-import ForgotPassword from "@/app/pages/auth/forgot-password/forgot-password";
-import OTP from "@/app/pages/auth/forgot-password/otp";
+import ForgotPassword from "@/app/pages/auth/forgot-password/forms/forgot-password";
+import OTP from "@/app/pages/auth/forgot-password/forms/otp";
 import { Toaster } from "@/components/ui/sonner";
-import NewPassword from "@/app/pages/auth/forgot-password/new-password";
+import NewPassword from "@/app/pages/auth/forgot-password/forms/new-password";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([

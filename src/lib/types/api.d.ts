@@ -33,7 +33,6 @@ declare type SuccessfullVerifyCode = {
   status: string;
 };
 
-// Exact shape for { "status": "Success" }
 declare type SuccessVerifyCode = {
   status: "Success";
 };

@@ -26,5 +26,12 @@
   "english": "English",
   "arabic": "العربية",
   "toggleTheme": "تبديل المظهر",
-  "code-length": "أكبر شيء هو أربعة أرقام."
+  "code-length": "أكبر شيء هو أربعة أرقام.",
+  "8-characters-required": "8 أحرف مطلوبة",
+  "passwords-do-not-match": "كلمات المرور لا تتطابق",
+  "20-characters-max": "20 حرفًا كحد أقصى",
+  "must-include-an-uppercase-letter": "يجب أن تتضمن رسالة كبيرة",
+  "must-include-a-lowercase-letter": "يجب أن تتضمن حرفًا صغيرًا",
+  "must-include-a-number": "يجب أن تتضمن رقمًا",
+  "must-include-a-special-character": "يجب أن تتضمن شخصية خاصة"
 }

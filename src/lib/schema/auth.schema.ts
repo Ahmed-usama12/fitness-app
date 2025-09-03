@@ -1,15 +1,6 @@
 import { useTranslations } from "use-intl";
 import { z } from "zod";
-
-// Email Schema
-const emailSchema = (t: KeyTranslation) =>
-  z.templateLiteral([
-    z.string().min(1, { message: t("email-empty") }),
-    "@",
-    z.string().max(64, {
-      message: t("long-email"),
-    }),
-  ]);
+import { emailSchema, passwordSchema } from "./common.schema";
 
 // Forgot password schema
 function useForgotPasswordSchema() {
@@ -22,7 +13,6 @@ function useForgotPasswordSchema() {
 }
 
 // Verfiy Code Schema
-
 function useVerifyCodeSchema() {
   const t = useTranslations();
 
@@ -34,11 +24,37 @@ function useVerifyCodeSchema() {
   });
 }
 
+// New Password Shcema
+function useNewPasswordSchema() {
+  // Translation
+  const t = useTranslations();
+
+  return z.object({
+    email: emailSchema(t),
+    newPassword: passwordSchema(t),
+  });
+
+  // return z
+  //   .object({
+  //     newPwd: z.string().min(8, { message: t("8-characters-required") }),
+  //     confirmPwd: z.string().min(8, { message: t("8-characters-required") }),
+  //   })
+  //   .refine((data) => data.newPwd === data.confirmPwd, {
+  //     message: t("passwords-do-not-match"),
+  //     path: ["confirmPwd"],
+  //   });
+}
+
 type ForgotPasswordFields = z.infer<ReturnType<typeof useForgotPasswordSchema>>;
 type VerifyCodeFields = z.infer<ReturnType<typeof useVerifyCodeSchema>>;
+type NewPasswordFields = z.infer<ReturnType<typeof useNewPasswordSchema>>;
 
 // Export Schema
-export { useForgotPasswordSchema, useVerifyCodeSchema };
+export { useForgotPasswordSchema, useVerifyCodeSchema, useNewPasswordSchema };
 
 // Export Fields
-export { type ForgotPasswordFields, type VerifyCodeFields };
+export {
+  type ForgotPasswordFields,
+  type VerifyCodeFields,
+  type NewPasswordFields,
+};

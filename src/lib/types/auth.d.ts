@@ -6,3 +6,7 @@ declare interface AuthResponse {
 declare interface ForgotPasswordResponse {
   info: string;
 }
+
+declare interface RestPasswordResponse {
+  token: string;
+}
