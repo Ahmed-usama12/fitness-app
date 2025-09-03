@@ -1,12 +1,15 @@
 import { useTranslations } from "use-intl";
 import { z } from "zod";
 
-// Email Schema with translated messages
+// Email Schema
 const emailSchema = (t: KeyTranslation) =>
-  z
-    .string()
-    .min(1, { message: t("email-empty") })
-    .email({ message: t("long-email") });
+  z.templateLiteral([
+    z.string().min(1, { message: t("email-empty") }),
+    "@",
+    z.string().max(64, {
+      message: t("long-email"),
+    }),
+  ]);
 
 // Forgot password schema
 function useForgotPasswordSchema() {
