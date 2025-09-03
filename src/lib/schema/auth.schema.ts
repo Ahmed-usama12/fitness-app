@@ -21,10 +21,24 @@ function useForgotPasswordSchema() {
   });
 }
 
+// Verfiy Code Schema
+
+function useVerifyCodeSchema() {
+  const t = useTranslations();
+
+  return z.object({
+    resetCode: z
+      .string()
+      .min(6, { message: t("code-length") })
+      .max(6, { message: t("code-length") }),
+  });
+}
+
 type ForgotPasswordFields = z.infer<ReturnType<typeof useForgotPasswordSchema>>;
+type VerifyCodeFields = z.infer<ReturnType<typeof useVerifyCodeSchema>>;
 
 // Export Schema
-export { useForgotPasswordSchema };
+export { useForgotPasswordSchema, useVerifyCodeSchema };
 
 // Export Fields
-export { type ForgotPasswordFields };
+export { type ForgotPasswordFields, type VerifyCodeFields };
