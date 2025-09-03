@@ -29,4 +29,15 @@ declare type ErrorResponse = {
   error: string;
 };
 
+declare type SuccessfullVerifyCode = {
+  status: string;
+};
+
+// Exact shape for { "status": "Success" }
+declare type SuccessVerifyCode = {
+  status: "Success";
+};
+
 declare type APIResponse<T> = SuccessfullResponse<T> | ErrorResponse;
+
+declare type VerfiyResponse = SuccessVerifyCode | ErrorResponse;

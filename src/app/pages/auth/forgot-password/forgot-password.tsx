@@ -6,7 +6,7 @@ import {
 } from "@/lib/schema/auth.schema";
 
 import { useId } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, type DefaultValues } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -27,7 +27,7 @@ export default function ForgotPassword() {
 
   // Form
   const form = useForm<ForgotPasswordFields>({
-    defaultValues: { email: "" },
+    defaultValues: {} as DefaultValues<ForgotPasswordFields>,
     resolver: zodResolver(schema),
   });
 

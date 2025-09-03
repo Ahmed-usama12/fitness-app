@@ -1,12 +1,15 @@
 import { useTranslations } from "use-intl";
 import { z } from "zod";
 
-// Email Schema with translated messages
+// Email Schema
 const emailSchema = (t: KeyTranslation) =>
-  z
-    .string()
-    .min(1, { message: t("email-empty") })
-    .email({ message: t("long-email") });
+  z.templateLiteral([
+    z.string().min(1, { message: t("email-empty") }),
+    "@",
+    z.string().max(64, {
+      message: t("long-email"),
+    }),
+  ]);
 
 // Forgot password schema
 function useForgotPasswordSchema() {
@@ -18,10 +21,24 @@ function useForgotPasswordSchema() {
   });
 }
 
+// Verfiy Code Schema
+
+function useVerifyCodeSchema() {
+  const t = useTranslations();
+
+  return z.object({
+    resetCode: z
+      .string()
+      .min(6, { message: t("code-length") })
+      .max(6, { message: t("code-length") }),
+  });
+}
+
 type ForgotPasswordFields = z.infer<ReturnType<typeof useForgotPasswordSchema>>;
+type VerifyCodeFields = z.infer<ReturnType<typeof useVerifyCodeSchema>>;
 
 // Export Schema
-export { useForgotPasswordSchema };
+export { useForgotPasswordSchema, useVerifyCodeSchema };
 
 // Export Fields
-export { type ForgotPasswordFields };
+export { type ForgotPasswordFields, type VerifyCodeFields };

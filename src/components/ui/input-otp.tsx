@@ -27,7 +27,7 @@ function InputOTP({
 function InputOTPGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      data-slot="input-otp-group "
+      data-slot="input-otp-group"
       className={cn("flex items-center", className)}
       {...props}
     />
@@ -49,7 +49,7 @@ function InputOTPSlot({
       data-slot="input-otp-slot"
       data-active={isActive}
       className={cn(
-        "rounded-none border-b-2 border-b-black dark:border-b-white w-[56px] shadow-none dark:bg-transparent data-[active=true]:border-b-orange-500 dark:data-[active=true]:border-b-orange-400 data-[active=true]:text-orange-500 dark:data-[active=true]:text-orange-400 data-[active=true]:ring-0 data-[active=true]:outline-none [&:has-char]:border-b-orange-500 dark:[&:has-char]:border-b-orange-400 [&:has-char]:text-orange-500 dark:[&:has-char]:text-orange-400 data-[active=true]:aria-invalid:border-destructive relative flex h-9  items-center justify-center text-sm transition-all outline-none first:rounded-l-md first:border-l last:rounded-r-md data-[active=true]:z-10",
+        " data-[active=true]:border-b-orange-500 dark:data-[active=true]:border-orange-400 data-[active=true]:text-orange-500 dark:data-[active=true]:text-orange-400 size-12 aria-invalid:border-destructive data-[active=true]:aria-invalid:border-destructive dark:bg-input/30 border-input relative flex items-center justify-center border-y border-r text-sm shadow-xs transition-all outline-none first:rounded-l-md first:border-l last:rounded-r-md data-[active=true]:z-10 data-[active=true]:ring-[3px]",
         className
       )}
       {...props}
