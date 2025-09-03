@@ -9,6 +9,7 @@ import Homepage from "@/app/pages/home/page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedRoute from "./protected-route";
 import ForgotPassword from "@/app/pages/auth/forgot-password/forgot-password";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
@@ -41,5 +42,10 @@ export default function AppRouter() {
     },
   ]);
 
-  return <RouterProvider router={routes}></RouterProvider>;
+  return (
+    <>
+      <Toaster />
+      <RouterProvider router={routes}></RouterProvider>
+    </>
+  );
 }

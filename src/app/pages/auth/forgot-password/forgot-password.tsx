@@ -16,6 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { forgotPassword } from "@/lib/api/auth.api";
 
 export default function ForgotPassword() {
   // Id hook
@@ -26,13 +27,13 @@ export default function ForgotPassword() {
 
   // Form
   const form = useForm<ForgotPasswordFields>({
-    defaultValues: {},
+    defaultValues: { email: "" },
     resolver: zodResolver(schema),
   });
 
   // Submit
-  const onSubmit = (values: ForgotPasswordFields) => {
-    console.log(values);
+  const onSubmit = async (values: ForgotPasswordFields) => {
+    await forgotPassword(values);
   };
 
   return (
