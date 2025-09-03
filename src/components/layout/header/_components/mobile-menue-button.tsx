@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import {buttonVariants } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import { navigationItems } from "./navigation-data";
 import { useTranslations } from "use-intl";
 import { ThemeToggle } from "@/components/common/theme-toggel";
 import LanguageMenu from "@/components/common/language-menu";
+import { cn } from "@/lib/utils";
 
 /**
  * Props interface for MobileMenueButton component
@@ -39,16 +40,14 @@ export default function MobileMenueButton({
       >
         {/* Mobile menu trigger button */}
         <SheetTrigger asChild>
-          <Button
-            icon={false}
-            variant="ghost"
-            size="icon"
+          <div
+           className={cn(buttonVariants({variant:"ghost",size:"icon"}))}
           >
             <Menu
               size={20}
               className="text-black dark:text-white"
             />
-          </Button>
+          </div>
         </SheetTrigger>
 
         {/* Mobile menu content */}

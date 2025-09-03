@@ -6,7 +6,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { userMenuItems } from "./navigation-data";
@@ -14,6 +14,7 @@ import { Separator } from "@/components/ui/separator";
 import { ThemeToggle } from "@/components/common/theme-toggel";
 import { useTranslations } from "use-intl";
 import LanguageMenu from "@/components/common/language-menu";
+import { cn } from "@/lib/utils";
 
 /**
  * Props interface for UserDropdownMenu component
@@ -37,15 +38,12 @@ export function UserDropdownMenu({
   return (
     <DropdownMenu>
       {/* Trigger button with user icon */}
-      <DropdownMenuTrigger className="hidden md:flex">
-        <Button
-          icon={false}
-          size="icon"
-          variant="default"
-          className="size-[47px]"
+      <DropdownMenuTrigger  className="hidden md:flex">
+        <div  
+          className={cn(buttonVariants({variant:"default" , size:"icon"}),"size-[47px]")}
         >
           <User className="h-5 w-5" />
-        </Button>
+        </div>
       </DropdownMenuTrigger>
 
       {/* Dropdown content */}
