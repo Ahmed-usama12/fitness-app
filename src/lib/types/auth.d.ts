@@ -7,6 +7,6 @@ declare interface ForgotPasswordResponse {
   info: string;
 }
 
-declare interface RestPasswordResponse {
+declare interface NewPasswordResponse {
   token: string;
 }

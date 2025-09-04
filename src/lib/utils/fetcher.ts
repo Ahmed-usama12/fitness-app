@@ -39,7 +39,9 @@ export async function apiRequest<TResponse, TBody = unknown>({
   } catch (error: unknown) {
     if (axios.isAxiosError(error) && error.response) {
       const apiError = error.response.data as ErrorResponse;
-      toast.error(apiError.error);
+      console.log(error);
+
+      toast.error(apiError.error || "Error");
       return error.response.data as APIResponse<TResponse>;
     }
     throw error;

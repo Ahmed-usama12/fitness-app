@@ -7,8 +7,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
-import { forgotPassword } from "@/lib/api/auth.api";
+import { newPassword } from "@/lib/api/auth.api";
 import {
   useNewPasswordSchema,
   type NewPasswordFields,
@@ -28,7 +29,7 @@ export default function NewPassword() {
 
   // Submit
   const onSubmit = async (values: NewPasswordFields) => {
-    await forgotPassword(values);
+    await newPassword(values);
   };
 
   return (
@@ -62,7 +63,7 @@ export default function NewPassword() {
 
                     {/* Input */}
                     <FormControl>
-                      <PasswordInput
+                      <Input
                         id={"email"}
                         type="email"
                         placeholder="Email"
@@ -94,7 +95,6 @@ export default function NewPassword() {
                     <FormControl>
                       <PasswordInput
                         id={"New Password"}
-                        type="password"
                         placeholder="New Password"
                         {...field}
                       />
@@ -109,6 +109,7 @@ export default function NewPassword() {
 
             {/* Actions */}
             <Button
+              type="submit"
               icon={false}
               className="w-full"
             >
