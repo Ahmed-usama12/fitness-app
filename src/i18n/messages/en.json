@@ -33,5 +33,17 @@
   "must-include-an-uppercase-letter": "Must include an uppercase letter",
   "must-include-a-lowercase-letter": "Must include a lowercase letter",
   "must-include-a-number": "Must include a number",
-  "must-include-a-special-character": "Must include a special character"
+  "must-include-a-special-character": "Must include a special character",
+  "forgot-password": "Forgot Password",
+  "enter-your-email": "Enter Your Email",
+  "send-otp": "Send OTP",
+  "create-new-password": "create new password",
+  "make-sure-to-create-a-strong-password": "Make sure to create a strong password!",
+  "enter-your-new-password": "Enter Your New Password",
+  "new-password": "New Password",
+  "change-password": "Change Password",
+  "otp-code": "OTP Code",
+  "enter-the-otp-you-have-received": "Enter The OTP You Have Received",
+  "confirm": "Confirm",
+  "didnt-receive-verification-code": "didn’t receive verification code?"
 }

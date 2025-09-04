@@ -14,10 +14,14 @@ import { useNewPasswordSchema, type NewPasswordFields } from "@/lib/schema/auth.
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type DefaultValues } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useTranslations } from "use-intl";
 
 export default function NewPassword() {
   // Navigation
   const navigate = useNavigate();
+
+  // Translations
+  const t = useTranslations();
 
   // Schema
   const schema = useNewPasswordSchema();
@@ -37,10 +41,10 @@ export default function NewPassword() {
 
   return (
     <div>
-      <h1 className="mb-2 px-4 py-2 text-5xl font-extrabold">create new password</h1>
+      <h1 className="mb-2 px-4 py-2 text-5xl font-extrabold">{t("create-new-password")}</h1>
       <div className="rounded-[50px] border p-10">
         <Form {...form}>
-          <p className="pb-4 text-center text-2xl">Make sure to create a strong password!</p>
+          <p className="pb-4 text-center text-2xl">{t("make-sure-to-create-a-strong-password")}</p>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
@@ -50,12 +54,12 @@ export default function NewPassword() {
                   <FormItem className="mx-auto flex w-3/4 flex-col items-center justify-center">
                     {/* Label */}
                     <FormLabel htmlFor={"email"} className="sr-only text-center text-2xl">
-                      Enter Your Email
+                      {t("enter-your-email")}
                     </FormLabel>
 
                     {/* Input */}
                     <FormControl>
-                      <Input id={"email"} type="email" placeholder="Email" {...field} />
+                      <Input id={"email"} type="email" placeholder={t("email")} {...field} />
                     </FormControl>
 
                     {/* Error message */}
@@ -72,12 +76,16 @@ export default function NewPassword() {
                   <FormItem className="mx-auto flex w-3/4 flex-col items-center justify-center">
                     {/* Label */}
                     <FormLabel htmlFor={"New Password"} className="sr-only text-center text-2xl">
-                      Enter Your New Password
+                      {t("enter-your-new-password")}
                     </FormLabel>
 
                     {/* Input */}
                     <FormControl>
-                      <PasswordInput id={"New Password"} placeholder="New Password" {...field} />
+                      <PasswordInput
+                        id={"New Password"}
+                        placeholder={t("new-password")}
+                        {...field}
+                      />
                     </FormControl>
 
                     {/* Error message */}
@@ -89,7 +97,7 @@ export default function NewPassword() {
 
             {/* Actions */}
             <Button type="submit" icon={false} className="w-full">
-              Change Password
+              {t("change-password")}
             </Button>
           </form>
         </Form>

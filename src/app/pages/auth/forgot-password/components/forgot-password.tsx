@@ -15,10 +15,14 @@ import {
 } from "@/components/ui/form";
 import { forgotPassword } from "@/lib/api/auth.api";
 import { useStepResetPass } from "@/context/step-reset-pass/hooks";
+import { useTranslations } from "use-intl";
 
 export default function ForgotPassword() {
   // Id hook
   const id = useId();
+
+  // Translations
+  const t = useTranslations();
 
   // Context
   const { setStep } = useStepResetPass();
@@ -41,7 +45,7 @@ export default function ForgotPassword() {
 
   return (
     <div>
-      <h1 className="mb-2 px-4 py-2 text-5xl font-extrabold">Forgot Password</h1>
+      <h1 className="mb-2 px-4 py-2 text-5xl font-extrabold">{t("forgot-password")}</h1>
       <div className="rounded-[50px] border p-10">
         {/* Form */}
         <Form {...form}>
@@ -54,12 +58,12 @@ export default function ForgotPassword() {
                 <FormItem className="flex w-full flex-col items-center justify-center">
                   {/* Label */}
                   <FormLabel htmlFor={id} className="text-center text-2xl">
-                    Enter Your Email
+                    {t("enter-your-email")}
                   </FormLabel>
 
                   {/* Input */}
                   <FormControl>
-                    <Input id={id} type="email" placeholder="email" {...field} />
+                    <Input id={id} type="email" placeholder={t("email")} {...field} />
                   </FormControl>
 
                   {/* Error message */}
@@ -70,7 +74,7 @@ export default function ForgotPassword() {
 
             {/* Actions */}
             <Button icon={false} className="w-full">
-              Send OTP
+              {t("send-otp")}
             </Button>
           </form>
         </Form>

@@ -33,16 +33,6 @@ function useNewPasswordSchema() {
     email: emailSchema(t),
     newPassword: passwordSchema(t),
   });
-
-  // return z
-  //   .object({
-  //     newPwd: z.string().min(8, { message: t("8-characters-required") }),
-  //     confirmPwd: z.string().min(8, { message: t("8-characters-required") }),
-  //   })
-  //   .refine((data) => data.newPwd === data.confirmPwd, {
-  //     message: t("passwords-do-not-match"),
-  //     path: ["confirmPwd"],
-  //   });
 }
 
 type ForgotPasswordFields = z.infer<ReturnType<typeof useForgotPasswordSchema>>;
@@ -53,8 +43,4 @@ type NewPasswordFields = z.infer<ReturnType<typeof useNewPasswordSchema>>;
 export { useForgotPasswordSchema, useVerifyCodeSchema, useNewPasswordSchema };
 
 // Export Fields
-export {
-  type ForgotPasswordFields,
-  type VerifyCodeFields,
-  type NewPasswordFields,
-};
+export { type ForgotPasswordFields, type VerifyCodeFields, type NewPasswordFields };
