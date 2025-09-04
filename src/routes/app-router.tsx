@@ -8,10 +8,9 @@ import Healthy from "@/app/pages/healthy/page";
 import Homepage from "@/app/pages/home/page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedRoute from "./protected-route";
-import ForgotPassword from "@/app/pages/auth/forgot-password/forms/forgot-password";
-import OTP from "@/app/pages/auth/forgot-password/forms/otp";
 import { Toaster } from "@/components/ui/sonner";
-import NewPassword from "@/app/pages/auth/forgot-password/forms/new-password";
+import ResetPassword from "@/app/pages/auth/forgot-password/page";
+import StepsRestPassProvider from "@/context/step-reset-pass/provider";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
@@ -39,9 +38,14 @@ export default function AppRouter() {
         },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
-        { path: "forgot-password", element: <ForgotPassword /> },
-        { path: "otp", element: <OTP /> },
-        { path: "new-password", element: <NewPassword /> },
+        {
+          path: "forgot-password",
+          element: (
+            <StepsRestPassProvider>
+              <ResetPassword />
+            </StepsRestPassProvider>
+          ),
+        },
       ],
     },
   ]);
