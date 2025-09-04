@@ -1,9 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  useForgotPasswordSchema,
-  type ForgotPasswordFields,
-} from "@/lib/schema/auth.schema";
+import { useForgotPasswordSchema, type ForgotPasswordFields } from "@/lib/schema/auth.schema";
 
 import { useId } from "react";
 import { useForm, type DefaultValues } from "react-hook-form";
@@ -17,10 +14,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { forgotPassword } from "@/lib/api/auth.api";
+import { useStepResetPass } from "@/context/step-reset-pass/hooks";
 
 export default function ForgotPassword() {
   // Id hook
   const id = useId();
+
+  // Context
+  const { setStep } = useStepResetPass();
 
   // Schema
   const schema = useForgotPasswordSchema();
@@ -33,43 +34,32 @@ export default function ForgotPassword() {
 
   // Submit
   const onSubmit = async (values: ForgotPasswordFields) => {
-    await forgotPassword(values);
+    const forgotPass = await forgotPassword(values);
+
+    if ("message" in forgotPass) setTimeout(() => setStep("two"), 2000);
   };
 
   return (
     <div>
-      <h1 className="text-5xl font-extrabold px-4 py-2 mb-2">
-        Forgot Password
-      </h1>
-      <div className="p-10 rounded-[50px] border">
+      <h1 className="mb-2 px-4 py-2 text-5xl font-extrabold">Forgot Password</h1>
+      <div className="rounded-[50px] border p-10">
         {/* Form */}
         <Form {...form}>
           {" "}
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-6"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem className="w-full flex flex-col justify-center items-center">
+                <FormItem className="flex w-full flex-col items-center justify-center">
                   {/* Label */}
-                  <FormLabel
-                    htmlFor={id}
-                    className="text-center text-2xl"
-                  >
+                  <FormLabel htmlFor={id} className="text-center text-2xl">
                     Enter Your Email
                   </FormLabel>
 
                   {/* Input */}
                   <FormControl>
-                    <Input
-                      id={id}
-                      type="email"
-                      placeholder="email"
-                      {...field}
-                    />
+                    <Input id={id} type="email" placeholder="email" {...field} />
                   </FormControl>
 
                   {/* Error message */}
@@ -79,10 +69,7 @@ export default function ForgotPassword() {
             />
 
             {/* Actions */}
-            <Button
-              icon={false}
-              className="w-full"
-            >
+            <Button icon={false} className="w-full">
               Send OTP
             </Button>
           </form>

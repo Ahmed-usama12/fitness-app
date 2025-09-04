@@ -10,14 +10,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
 import { newPassword } from "@/lib/api/auth.api";
-import {
-  useNewPasswordSchema,
-  type NewPasswordFields,
-} from "@/lib/schema/auth.schema";
+import { useNewPasswordSchema, type NewPasswordFields } from "@/lib/schema/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type DefaultValues } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 export default function NewPassword() {
+  // Navigation
+  const navigate = useNavigate();
+
   // Schema
   const schema = useNewPasswordSchema();
 
@@ -29,46 +30,32 @@ export default function NewPassword() {
 
   // Submit
   const onSubmit = async (values: NewPasswordFields) => {
-    await newPassword(values);
+    const restPasss = await newPassword(values);
+
+    if ("message" in restPasss) setTimeout(() => navigate("/auth/login"), 2000);
   };
 
   return (
     <div>
-      <h1 className="text-5xl font-extrabold px-4 py-2 mb-2">
-        create new password
-      </h1>
-      <div className="p-10 rounded-[50px] border">
+      <h1 className="mb-2 px-4 py-2 text-5xl font-extrabold">create new password</h1>
+      <div className="rounded-[50px] border p-10">
         <Form {...form}>
-          <p className="text-center text-2xl pb-4">
-            Make sure to create a strong password!
-          </p>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4"
-          >
+          <p className="pb-4 text-center text-2xl">Make sure to create a strong password!</p>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
                 <>
-                  {" "}
-                  <FormItem className="w-3/4 mx-auto flex flex-col justify-center items-center">
+                  <FormItem className="mx-auto flex w-3/4 flex-col items-center justify-center">
                     {/* Label */}
-                    <FormLabel
-                      htmlFor={"email"}
-                      className="text-center text-2xl sr-only"
-                    >
+                    <FormLabel htmlFor={"email"} className="sr-only text-center text-2xl">
                       Enter Your Email
                     </FormLabel>
 
                     {/* Input */}
                     <FormControl>
-                      <Input
-                        id={"email"}
-                        type="email"
-                        placeholder="Email"
-                        {...field}
-                      />
+                      <Input id={"email"} type="email" placeholder="Email" {...field} />
                     </FormControl>
 
                     {/* Error message */}
@@ -82,22 +69,15 @@ export default function NewPassword() {
               name="newPassword"
               render={({ field }) => (
                 <>
-                  <FormItem className="w-3/4 mx-auto flex flex-col justify-center items-center">
+                  <FormItem className="mx-auto flex w-3/4 flex-col items-center justify-center">
                     {/* Label */}
-                    <FormLabel
-                      htmlFor={"New Password"}
-                      className="text-center text-2xl sr-only"
-                    >
+                    <FormLabel htmlFor={"New Password"} className="sr-only text-center text-2xl">
                       Enter Your New Password
                     </FormLabel>
 
                     {/* Input */}
                     <FormControl>
-                      <PasswordInput
-                        id={"New Password"}
-                        placeholder="New Password"
-                        {...field}
-                      />
+                      <PasswordInput id={"New Password"} placeholder="New Password" {...field} />
                     </FormControl>
 
                     {/* Error message */}
@@ -108,11 +88,7 @@ export default function NewPassword() {
             />
 
             {/* Actions */}
-            <Button
-              type="submit"
-              icon={false}
-              className="w-full"
-            >
+            <Button type="submit" icon={false} className="w-full">
               Change Password
             </Button>
           </form>

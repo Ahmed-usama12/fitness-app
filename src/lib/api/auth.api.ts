@@ -10,7 +10,7 @@ import { toast } from "sonner";
 
 // Forgot password
 export const forgotPassword = async (
-  values: ForgotPasswordFields
+  values: ForgotPasswordFields,
 ): Promise<APIResponse<ForgotPasswordResponse>> => {
   return apiRequest<ForgotPasswordResponse, ForgotPasswordFields>({
     url: `${API_URL}/auth/forgotPassword`,
@@ -21,7 +21,7 @@ export const forgotPassword = async (
 
 //  Reset password
 export const newPassword = async (
-  values: NewPasswordFields
+  values: NewPasswordFields,
 ): Promise<APIResponse<NewPasswordResponse>> => {
   return apiRequest<NewPasswordResponse, NewPasswordFields>({
     url: `${API_URL}/auth/resetPassword`,
@@ -31,14 +31,9 @@ export const newPassword = async (
 };
 
 // Verify Code
-export const sendCode = async (
-  values: VerifyCodeFields
-): Promise<VerfiyResponse> => {
+export const sendCode = async (values: VerifyCodeFields): Promise<VerfiyResponse> => {
   try {
-    const { data } = await axios.post<VerfiyResponse>(
-      `${API_URL}/auth/verifyResetCode`,
-      values
-    );
+    const { data } = await axios.post<VerfiyResponse>(`${API_URL}/auth/verifyResetCode`, values);
 
     if ("error" in data) {
       toast.error(data.error);
