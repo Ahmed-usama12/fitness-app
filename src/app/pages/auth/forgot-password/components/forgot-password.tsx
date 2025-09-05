@@ -40,7 +40,10 @@ export default function ForgotPassword() {
   const onSubmit = async (values: ForgotPasswordFields) => {
     const forgotPass = await forgotPassword(values);
 
-    if ("message" in forgotPass) setTimeout(() => setStep("two"), 2000);
+    if ("message" in forgotPass) {
+      localStorage.setItem("email", values.email);
+      setTimeout(() => setStep("two"), 2000);
+    }
   };
 
   return (

@@ -11,18 +11,21 @@ import {
 
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { useStepResetPass } from "@/context/step-reset-pass/hooks";
-import { sendCode } from "@/lib/api/auth.api";
+import { forgotPassword, sendCode } from "@/lib/api/auth.api";
 
 import { useVerifyCodeSchema, type VerifyCodeFields } from "@/lib/schema/auth.schema";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DotIcon } from "lucide-react";
 
-import { useId } from "react";
+import { useId, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslations } from "use-intl";
 
 export default function OTP() {
+  const [timeLeft, setTimeLeft] = useState(30);
+  const [isTimerActive, setIsTimerActive] = useState(true);
+
   // Id Hooks
   const id = useId();
 
@@ -46,6 +49,37 @@ export default function OTP() {
     const verifyCode = await sendCode(values);
 
     if ("status" in verifyCode) setTimeout(() => setStep("three"), 2000);
+  };
+
+  // Effect
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isTimerActive && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft((prev) => prev - 1);
+      }, 1000);
+    } else if (timeLeft === 0) {
+      setIsTimerActive(false);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [timeLeft, isTimerActive]);
+
+  // Function
+  const handleResendCode = async () => {
+    //email
+    const email = localStorage.getItem("email");
+    // Time
+
+    if (email) {
+      const forgot = await forgotPassword({ email: email as `${string}@${string}` });
+      if ("message" in forgot) {
+        setTimeLeft(30);
+        setIsTimerActive(true);
+      }
+    }
   };
 
   return (
@@ -100,8 +134,15 @@ export default function OTP() {
 
         <div className="flex flex-col items-center">
           <p>{t("didnt-receive-verification-code")}</p>
-          <Button className="text-main p-0 underline" variant={"link"} size={"sm"} icon={false}>
-            Resend Code
+          <Button
+            disabled={isTimerActive}
+            onClick={handleResendCode}
+            className="text-main p-0 underline"
+            variant={"link"}
+            size={"sm"}
+            icon={false}
+          >
+            {isTimerActive ? `Resend Code (${timeLeft}s)` : "Resend Code"}
           </Button>
         </div>
       </div>
