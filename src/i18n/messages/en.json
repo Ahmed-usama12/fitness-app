@@ -23,5 +23,16 @@
   "photo": "Photo",
   "english": "English",
   "arabic": "العربية",
-  "toggleTheme": "Toggle theme"
+  "toggleTheme": "Toggle theme",
+  "hero-section": {
+    "title": "YOUR BODY CAN <span>STAND ALMOST</span> ANYTHING",
+    "message": "It's your mind that needs convincing. Push past your limits, stay committed, and watch as your body transform into powerhouse of strength and resilience. Start your journey today & truly capable of",
+    "active-member": "Active Member",
+    "certified-trainers": "Certified Trainers",
+    "year-of-experience": "Year Of Experience",
+    "online-trainers": "OUTDOOR & ONLINE TRAINERS",
+    "live-classes": "LIVE CLASSES",
+    "personal-trainers": "PERSONAL TRAINERS",
+    "personal-training": "PERSONAL TRAINING"
+  }
 }

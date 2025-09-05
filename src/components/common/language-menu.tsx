@@ -33,10 +33,7 @@ export default function LanguageMenu() {
           {languages[locale]}
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        className="w-56"
-        align="start"
-      >
+      <DropdownMenuContent className="w-56" align="start">
         <DropdownMenuGroup>
           {/* arabic item */}
           <DropdownMenuItem

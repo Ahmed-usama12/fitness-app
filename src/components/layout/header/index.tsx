@@ -3,10 +3,11 @@ import { Button } from "@/components/ui/button";
 
 import logo from "@/assets/images/fit 1.png";
 import { UserDropdownMenu } from "./_components/user-dropdown-menu";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import MobileMenueButton from "./_components/mobile-menue-button";
 import { navigationItems } from "./_components/navigation-data";
 import { useTranslations } from "use-intl";
+import { cn } from "@/lib/utils";
 
 /**
  * Header component that provides navigation and authentication UI
@@ -50,54 +51,49 @@ export function Header() {
 
   return (
     <header
-      className={`w-full text-black sticky top-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 z-50 w-full text-black transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200/50 dark:bg-gray-900/80 dark:border-gray-700/50"
+          ? "border-b border-gray-200/50 bg-zinc-50/30 shadow-sm backdrop-blur-2xl dark:border-gray-700/50 dark:bg-zinc-800/60"
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto px-4 py-2 md:py-10 sm:px-6 lg:px-[80px]">
-        <div className="flex items-center justify-between h-16">
+      <div className="mx-auto px-4 py-2 sm:px-6 md:py-10 lg:px-[80px]">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo Section */}
           <div>
-            <img
-              src={logo}
-              className={"w-[87px] h-[55px]"}
-              alt={t("logo")}
-            />
+            <img src={logo} className={"h-[55px] w-[87px]"} alt={t("logo")} />
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden items-center space-x-8 md:flex">
             {navigationItems.map((item) => (
-              <Link
+              <NavLink
                 key={item.name}
                 to={item.href}
-                className="text-gray-700 hover:text-orange-500 dark:text-white dark:hover:text-orange-500 font-bold text-xl transition-colors duration-200"
+                className={({ isActive }) =>
+                  cn(
+                    "text-xl font-bold transition-colors duration-200",
+                    isActive ? "text-main" : "hover:!text-main text-gray-700 dark:text-white",
+                  )
+                }
               >
                 {t(item.name)}
-              </Link>
+              </NavLink>
             ))}
           </nav>
 
           {/* Desktop Authentication Section */}
           {!token ? (
-            <div className="hidden md:flex gap-2 items-center space-x-4">
+            <div className="hidden items-center gap-3 space-x-4 md:flex">
               <Button>{t("login")}</Button>
               <Button variant={"secondary"}>{t("signup")}</Button>
             </div>
           ) : (
-            <UserDropdownMenu
-              userEmail="john.doe@example.com"
-              userName="John Doe"
-            />
+            <UserDropdownMenu userEmail="john.doe@example.com" userName="John Doe" />
           )}
 
           {/* Mobile Menu Button */}
-          <MobileMenueButton
-            isOpen={isOpen}
-            handleOpen={setIsOpen}
-          />
+          <MobileMenueButton isOpen={isOpen} handleOpen={setIsOpen} />
         </div>
       </div>
     </header>
