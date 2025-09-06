@@ -54,7 +54,9 @@ export default function About() {
         </div>
 
         {/* Button */}
-        <Button onClick={() => nav("/classes")}>{t("get-started")}</Button>
+        <Button className="min-w-36" onClick={() => nav("/classes")}>
+          {t("get-started")}
+        </Button>
       </div>
     </section>
   );

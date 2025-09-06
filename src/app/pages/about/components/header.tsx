@@ -8,7 +8,7 @@ export default function AboutHeader() {
   const { theme } = useTheme();
   return (
     <div className="relative">
-      <svg viewBox="0 0 800 60" className="h-fit">
+      <svg viewBox="0 0 800 60" className="hidden h-fit md:block">
         <defs>
           <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor={theme === "dark" ? "#a1a1a1" : "#242424"} />
@@ -28,7 +28,7 @@ export default function AboutHeader() {
           {t("workouts")}
         </text>
       </svg>
-      <span className="text-main font-baloo absolute bottom-1 flex items-end gap-3 text-lg font-semibold ltr:left-1 rtl:right-1">
+      <span className="text-main font-baloo absolute top-0 flex items-end gap-3 text-lg font-semibold md:bottom-1 ltr:left-1 rtl:right-1 rtl:text-3xl">
         <Dumbbell className="rotate-45" width={34} height={30} />
         {t("about-us")}
       </span>
