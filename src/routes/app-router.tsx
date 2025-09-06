@@ -1,5 +1,4 @@
 import MainLayout from "@/app/layout";
-import About from "@/app/pages/about/page";
 import AuthLayout from "@/app/pages/auth/layout";
 import Login from "@/app/pages/auth/login";
 import Register from "@/app/pages/auth/register";
@@ -8,6 +7,7 @@ import Healthy from "@/app/pages/healthy/page";
 import Homepage from "@/app/pages/home/page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedRoute from "./protected-route";
+import AboutLayout from "@/app/pages/about/layout";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
@@ -20,7 +20,7 @@ export default function AppRouter() {
       ),
       children: [
         { index: true, element: <Homepage /> },
-        { path: "/about", element: <About /> },
+        { path: "/about", element: <AboutLayout /> },
         { path: "/classes", element: <Classes /> },
         { path: "/healthy", element: <Healthy /> },
       ],

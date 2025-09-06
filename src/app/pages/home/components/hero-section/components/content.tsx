@@ -3,9 +3,11 @@ import { Button } from "@/components/ui/button";
 
 import man from "@assets/images/man-1.png";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useFormatter, useTranslations } from "use-intl";
 export default function HeroContent() {
+  const nav = useNavigate();
   const t = useTranslations("hero-section");
   const format = useFormatter();
   const { isMobile } = useContext(isMobileContext);
@@ -44,7 +46,7 @@ export default function HeroContent() {
         </div>
 
         <div className="mt-16 flex justify-between gap-12 md:justify-start">
-          <Button icon={!isMobile} className="w-40">
+          <Button icon={!isMobile} className="w-40" onClick={() => nav("/classes")}>
             Get Started
           </Button>
           <Button icon={!isMobile} variant="secondary">
