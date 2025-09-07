@@ -7,7 +7,10 @@ import Healthy from "@/app/pages/healthy/page";
 import Homepage from "@/app/pages/home/page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedRoute from "./protected-route";
-import AboutLayout from "@/app/pages/about/layout";
+import { Toaster } from "@/components/ui/sonner";
+import ResetPassword from "@/app/pages/auth/forgot-password/page";
+import StepsRestPassProvider from "@/context/step-reset-pass/provider";
+import About from "@/app/pages/about/page";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
@@ -20,7 +23,7 @@ export default function AppRouter() {
       ),
       children: [
         { index: true, element: <Homepage /> },
-        { path: "/about", element: <AboutLayout /> },
+        { path: "/about", element: <About /> },
         { path: "/classes", element: <Classes /> },
         { path: "/healthy", element: <Healthy /> },
       ],
@@ -35,9 +38,22 @@ export default function AppRouter() {
         },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
+        {
+          path: "forgot-password",
+          element: (
+            <StepsRestPassProvider>
+              <ResetPassword />
+            </StepsRestPassProvider>
+          ),
+        },
       ],
     },
   ]);
 
-  return <RouterProvider router={routes}></RouterProvider>;
+  return (
+    <>
+      <Toaster />
+      <RouterProvider router={routes}></RouterProvider>
+    </>
+  );
 }
