@@ -3,11 +3,20 @@ import { Button } from "@/components/ui/button";
 
 import man from "@assets/images/man-1.png";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useFormatter, useTranslations } from "use-intl";
 export default function HeroContent() {
+  // Hook
+  const nav = useNavigate();
+
+  // translation
   const t = useTranslations("hero-section");
+
+  // format numbers
   const format = useFormatter();
+
+  // check if this screen is mobile
   const { isMobile } = useContext(isMobileContext);
   return (
     <div className="flex flex-col gap-5 px-5 md:flex-row md:gap-32 md:px-20">
@@ -44,7 +53,7 @@ export default function HeroContent() {
         </div>
 
         <div className="mt-16 flex justify-between gap-12 md:justify-start">
-          <Button icon={!isMobile} className="w-40">
+          <Button icon={!isMobile} className="w-40" onClick={() => nav("/classes")}>
             Get Started
           </Button>
           <Button icon={!isMobile} variant="secondary">

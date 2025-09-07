@@ -1,5 +1,5 @@
 import HeroContent from "./components/content";
-import ScrollTicker from "./components/scroll-ticker";
+import ScrollTicker from "@/components/common/scroll-ticker";
 
 export default function HeroSection() {
   return (

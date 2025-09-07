@@ -34,5 +34,20 @@
     "live-classes": "LIVE CLASSES",
     "personal-trainers": "PERSONAL TRAINERS",
     "personal-training": "PERSONAL TRAINING"
+  },
+  "about-section": {
+    "about-us": "About US",
+    "workouts": "WORKOUTS",
+    "empower": "EMPOWERING YOU TO <A>ACHIEVE YOUR</A> FITNESS GOALS",
+    "paragraph": "We believe fitness is more than just a workout—it's a lifestyle. With top-of- the-line facilities, certified trainers, and a supportive community, we're here to inspire and guide you every step of the way.",
+    "personal-trainer": "Personal Trainer",
+    "cardio-programs": "Cardio Programs",
+    "quality-equipment": "Quality Equipment",
+    "healthy-nutritions": "Healthy Nutritions",
+    "pt-parag": "Achieve your fitness goals with the guidance of our certified trainers.",
+    "cp-parag": "From steady-state runs to interval sprints, our treadmill programs.",
+    "qe-parag": "Our gym is equipped with the latest cardio & strength machines.",
+    "hn-parag": "Fuel your fitness journey with customized meal plans for you.",
+    "get-started": "Get Started"
   }
 }
