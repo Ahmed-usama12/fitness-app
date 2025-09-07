@@ -23,5 +23,16 @@
   "photo": "صورة",
   "english": "English",
   "arabic": "العربية",
-  "toggleTheme": "تبديل المظهر"
+  "toggleTheme": "تبديل المظهر",
+  "hero-section": {
+    "title": "يمكن لجسمك <span>ان يتحمل</span> اي شيء",
+    "message": "عقلك هو ما يحتاج إلى الإقناع. تجاوز حدودك، وحافظ علي الالتزام، وشاهد جسدك يتحول إلى مصدر قوة ومرونة. ابدأ رحلتك اليوم وأنت قادر على ذلك حقًا",
+    "active-member": "أعضاء نشطة",
+    "certified-trainers": "مدربين معتمدين",
+    "year-of-experience": "سنوات الخبرة",
+    "online-trainers": "مدربين خارجين وعبر الانترنت",
+    "live-classes": "بث مباشر للتدريب",
+    "personal-trainers": "مدربين شخصين",
+    "personal-training": "تدريب شخصي"
+  }
 }

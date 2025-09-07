@@ -10,34 +10,34 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedRoute from "./protected-route";
 
 export default function AppRouter() {
-	const routes = createBrowserRouter([
-		{
-			path: "/",
-			element: (
-				<ProtectedRoute>
-					<MainLayout />
-				</ProtectedRoute>
-			),
-			children: [
-				{ index: true, element: <Homepage /> },
-				{ path: "/about", element: <About /> },
-				{ path: "/classes", element: <Classes /> },
-				{ path: "/healthy", element: <Healthy /> },
-			],
-		},
-		{
-			path: "/auth",
-			element: <AuthLayout />,
-			children: [
-				{
-					index: true,
-					element: <Login />,
-				},
-				{ path: "login", element: <Login /> },
-				{ path: "register", element: <Register /> },
-			],
-		},
-	]);
+  const routes = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <ProtectedRoute>
+          <MainLayout />
+        </ProtectedRoute>
+      ),
+      children: [
+        { index: true, element: <Homepage /> },
+        { path: "/about", element: <About /> },
+        { path: "/classes", element: <Classes /> },
+        { path: "/healthy", element: <Healthy /> },
+      ],
+    },
+    {
+      path: "/auth",
+      element: <AuthLayout />,
+      children: [
+        {
+          index: true,
+          element: <Login />,
+        },
+        { path: "login", element: <Login /> },
+        { path: "register", element: <Register /> },
+      ],
+    },
+  ]);
 
-	return <RouterProvider router={routes}></RouterProvider>;
+  return <RouterProvider router={routes}></RouterProvider>;
 }
