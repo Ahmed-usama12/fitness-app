@@ -2,6 +2,7 @@
   "homepage": "Hello world!",
   "email-empty": "The part before @ cannot be empty",
   "long-email": "The part after @ must be at most 64 characters long",
+
   "login": "LOGIN",
   "signup": "SIGN UP",
   "logo": "Fitness App Logo",
