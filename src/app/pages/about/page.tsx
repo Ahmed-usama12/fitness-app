@@ -7,7 +7,10 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 export default function About() {
+  // translation
   const t = useTranslations("about-section");
+
+  // hook
   const nav = useNavigate();
 
   // programs
@@ -19,7 +22,6 @@ export default function About() {
   ];
 
   return (
-    // about
     <section className="my-10 grid grid-cols-1 gap-20 px-5 md:grid-cols-2 md:px-20">
       {/* photos */}
       <Photos />

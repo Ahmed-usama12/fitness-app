@@ -2,9 +2,11 @@ import { useTheme } from "@/hooks/use-theme";
 import { Dumbbell } from "lucide-react";
 import { useTranslations } from "use-intl";
 
-// About us header
 export default function AboutHeader() {
+  // translation
   const t = useTranslations("about-section");
+
+  // theme hook
   const { theme } = useTheme();
   return (
     <div className="relative">

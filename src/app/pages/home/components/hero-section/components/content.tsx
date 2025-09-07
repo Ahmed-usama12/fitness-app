@@ -7,9 +7,16 @@ import { useNavigate } from "react-router-dom";
 
 import { useFormatter, useTranslations } from "use-intl";
 export default function HeroContent() {
+  // Hook
   const nav = useNavigate();
+
+  // translation
   const t = useTranslations("hero-section");
+
+  // format numbers
   const format = useFormatter();
+
+  // check if this screen is mobile
   const { isMobile } = useContext(isMobileContext);
   return (
     <div className="flex flex-col gap-5 px-5 md:flex-row md:gap-32 md:px-20">
