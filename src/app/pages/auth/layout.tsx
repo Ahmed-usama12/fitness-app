@@ -29,7 +29,7 @@ export default function AuthLayout() {
 			</section>
 
 			{/*children*/}
-			<section className="z-10">
+			<section className="z-10 flex items-center justify-center">
 				<Outlet />
 			</section>
 		</main>
