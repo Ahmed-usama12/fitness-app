@@ -1,5 +1,3 @@
-import { useRegistrationSchema } from "@/lib/schema/auth.schema";
-import type { RegistrationFields } from "@/lib/schema/auth.schema";
 import {
   Form,
   FormControl,
@@ -8,64 +6,84 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import useRegister from "../hooks/useSignup";
-// import { useTranslations } from "use-intl";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { PasswordInput } from "@/components/ui/password-input";
 import { Link } from "react-router-dom";
 import { Facebook } from "lucide-react";
+import { useRegisterContext } from "@/lib/context/RegisterContext";
+import { z } from "zod";
+import { useEffect } from "react";
+import { Separator } from "@/components/ui/separator";
+import type { Register } from "@/lib/types/auth";
+import { useTranslations } from "use-intl";
 
 export default function RegisterForm() {
-  // Translation
-  // const t = useTranslations();
+  // Context
+  const { formData, setFormData, setStep } = useRegisterContext();
 
-  // Registraion Schema Hook
-  const registerSchema = useRegistrationSchema();
-  const { RegisterSubmit, isPending } = useRegister();
+  // Translaion
+  const t = useTranslations();
 
-  // Form
-  const form = useForm<RegistrationFields>({
-    resolver: zodResolver(registerSchema),
+  // validation
+  const form = useForm<Register>({
     defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "@",
-      password: "",
-      rePassword: "",
-      gender: "male",
-      height: 0,
-      weight: 0,
-      age: 0,
-      goal: "",
-      activityLevel: "",
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      password: formData.password,
+      rePassword: formData.rePassword,
     },
+    mode: "onChange",
   });
+  // Hook
+  useEffect(() => {
+    console.log("Current formData:", formData);
+  }, [formData]);
 
-  // Submition Function
-  const onSubmit: SubmitHandler<RegistrationFields> = (values) => {
-    RegisterSubmit(values);
+  // Function
+  const onSubmit: SubmitHandler<Register> = (values) => {
+    if (
+      !values.firstName ||
+      !values.lastName ||
+      !values.email ||
+      !values.password ||
+      !values.rePassword
+    ) {
+      form.setError("root", { message: "All fields are required" });
+      return;
+    }
+    if (values.password !== values.rePassword) {
+      form.setError("rePassword", { message: "Passwords do not match" });
+      return;
+    }
+    if (!z.string().email().safeParse(values.email).success) {
+      form.setError("email", { message: "Invalid email format" });
+      return;
+    }
+
+    setFormData({ ...formData, ...values });
+
+    setStep(2);
   };
 
   return (
     <div className="flex flex-col items-center">
-      {/* Headline */}
+      {/* Title */}
       <div className="font-baloo flex flex-col items-center">
-        <h4>Hey There</h4>
-        <h1>Create An Account</h1>
+        <h4>{t("hey")}</h4>
+        <h1 className="font-black text-5xl">{t("create-account")}</h1>
       </div>
 
-      {/* Form */}
-      <div className="w-[486px]  border-4 rounded-4xl my-7 py-10 px-20 flex flex-col items-center">
-        <h2 className="pb-4 font-baloo">Register</h2>
+      <div className="w-[486px] border-4 rounded-4xl my-7 py-10 px-20 flex flex-col items-center">
+        {/* Form Headline */}
+        <h2 className="pb-4 font-baloo">{t("register-headline")}</h2>
+        {/* Form */}
         <Form {...form}>
-          {/* Register Form */}
           <form
-            onSubmit={form.handleSubmit(onSubmit)}
             className="w-full space-y-4"
+            onSubmit={form.handleSubmit(onSubmit)}
           >
             {/* First Name */}
             <FormField
@@ -73,7 +91,7 @@ export default function RegisterForm() {
               name="firstName"
               render={({ field }) => (
                 <FormItem>
-                  {/* Lablel */}
+                  {/* Label */}
                   <FormLabel className="sr-only">First Name</FormLabel>
                   <FormControl>
                     <Input placeholder="First Name" {...field} />
@@ -89,7 +107,7 @@ export default function RegisterForm() {
               name="lastName"
               render={({ field }) => (
                 <FormItem>
-                  {/* Lablel */}
+                  {/* Label */}
                   <FormLabel className="sr-only">Last Name</FormLabel>
                   <FormControl>
                     <Input placeholder="Last Name" {...field} />
@@ -105,7 +123,7 @@ export default function RegisterForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  {/* Lablel */}
+                  {/* Label */}
                   <FormLabel className="sr-only">Email</FormLabel>
                   <FormControl>
                     <Input type="email" placeholder="Email" {...field} />
@@ -121,14 +139,10 @@ export default function RegisterForm() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  {/* Lablel */}
+                  {/* Label */}
                   <FormLabel className="sr-only">Password</FormLabel>
                   <FormControl>
-                    <PasswordInput
-                      type="password"
-                      placeholder="Password"
-                      {...field}
-                    />
+                    <PasswordInput placeholder="Password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -141,150 +155,54 @@ export default function RegisterForm() {
               name="rePassword"
               render={({ field }) => (
                 <FormItem>
-                  {/* Lablel */}
+                  {/* Label */}
                   <FormLabel className="sr-only">Confirm Password</FormLabel>
                   <FormControl>
-                    <PasswordInput
-                      type="password"
-                      placeholder="Confirm Password"
-                      {...field}
-                    />
+                    <PasswordInput placeholder="Confirm Password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
+            {/* Forget Password Link */}
             <div className="flex justify-end">
-              <Link to="" className="font-baloo underline text-main text-base ">
-                Forget Password?
+              <Link to="" className="font-baloo underline text-main text-base">
+                {t("forget-password")}
               </Link>
             </div>
-            <hr className="" />
 
-            {/* icons */}
-            <div className="flex justify-center gap-3 items-center">
-              {/* Facebook Icon */}
-              <div className="bg-[#242424] p-2 rounded-full w-fit">
-                <Facebook className="text-white " />
-              </div>
-              {/* Google Icon */}
-              <div className="bg-[#242424] p-2 rounded-full w-fit">
-                <Facebook className="text-white " />
-              </div>
-              {/* Apple Icon */}
-              <div className="bg-[#242424] p-2 rounded-full w-fit">
-                <Facebook className="text-white " />
-              </div>
+            {/* Separetor */}
+            <div className="flex items-center w-full gap-2">
+              <Separator className="flex-1" />
+              <span className="text-sm text-gray-400">{t("or")}</span>
+              <Separator className="flex-1" />
             </div>
 
-            {/* --------------- it's just for Test---------------- */}
-            {/* Age */}
-            {/* <FormField
-                  control={form.control}
-                  name="age"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="sr-only">Age</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="number"
-                          placeholder="Age"
-                          {...field}
-                          onChange={(e) => field.onChange(e.target.valueAsNumber)}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                /> */}
-
-            {/* Height */}
-            {/* <FormField
-              control={form.control}
-              name="height"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="sr-only">Height (cm)</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="Height"
-                      {...field}
-                      onChange={(e) => field.onChange(e.target.valueAsNumber)}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
-
-            {/* Weight */}
-            {/* <FormField
-              control={form.control}
-              name="weight"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="sr-only">Weight (kg)</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="Weight"
-                      {...field}
-                      onChange={(e) => field.onChange(e.target.valueAsNumber)}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
-
-            {/* Goal */}
-            {/* <FormField
-              control={form.control}
-              name="goal"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="sr-only">Goal</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Your goal" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
-
-            {/* Activity Level */}
-            {/* <FormField
-              control={form.control}
-              name="activityLevel"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="sr-only">Activity Level</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Activity Level" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
-
-            {/* Submit Button */}
-            <Button
-              type="submit"
-              className="w-full"
-              disabled={isPending}
-              icon={false}
-            >
-              {isPending ? "Registering..." : "Register"}
+            {/* Social Icons */}
+            <div className="flex justify-center gap-3 items-center">
+              <div className="bg-[#242424] p-2 rounded-full w-fit">
+                <Facebook className="text-white" />
+              </div>
+              <div className="bg-[#242424] p-2 rounded-full w-fit">
+                <Facebook className="text-white" />
+              </div>
+              <div className="bg-[#242424] p-2 rounded-full w-fit">
+                <Facebook className="text-white" />
+              </div>
+            </div>
+            {/* Button */}
+            <Button type="submit" className="w-full font-baloo" icon={false}>
+              {t("register-headline")}
             </Button>
           </form>
         </Form>
 
-        {/* Login link */}
+        {/* Check if user has account */}
         <div className="flex gap-0.5 pt-2">
-          <p>Already Have an account ? </p>
+          <p>{t("have-acc-question")} </p>
           <Link to="login" className="text-main">
-            Login
+            {t("login-link")}
           </Link>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import type { Register } from "@/lib/types/auth";
 
 // 1) define context type
@@ -22,7 +22,7 @@ export const RegisterProvider = ({
   const [formData, setFormData] = useState<Register>({
     firstName: "",
     lastName: "",
-    email: "",
+    email: "" as `${string}@${string}`,
     password: "",
     rePassword: "",
     gender: "male",
@@ -32,6 +32,12 @@ export const RegisterProvider = ({
     goal: "",
     activityLevel: "",
   });
+  useEffect(() => {
+    console.log(
+      `[RegisterProvider] Step ${step} - Current formData:`,
+      formData
+    );
+  }, [step, formData]);
 
   return (
     <RegisterContext.Provider value={{ step, setStep, formData, setFormData }}>
@@ -44,7 +50,7 @@ export const RegisterProvider = ({
 export const useRegisterContext = () => {
   const context = useContext(RegisterContext);
   if (!context) {
-    throw new Error("useRegisterContext must be used inside RegisterProvider");
+    throw new Error("UseRegisterContext must be used inside RegisterProvider");
   }
   return context;
 };
