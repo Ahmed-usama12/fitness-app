@@ -2,11 +2,18 @@ import axios from "axios";
 import { API_URL } from "../constants/url-api";
 import type {
   ForgotPasswordFields,
+  LoginFields,
   NewPasswordFields,
   VerifyCodeFields,
 } from "../schema/auth.schema";
 import { apiRequest } from "../utils/fetcher";
 import { toast } from "sonner";
+
+//Login
+export const login = async (values: LoginFields): Promise<APIResponse<AuthResponse>> => {
+  const { data } = await axios.post(`${import.meta.env.VITE_API}/auth/signin`, values);
+  return data;
+};
 
 // Forgot password
 export const forgotPassword = async (
