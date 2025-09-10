@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { ChatHeader } from "./chat-header";
 import { ChatMessages } from "./chat-messages";
@@ -67,17 +65,13 @@ export function SmartCoachChat() {
   };
 
   return (
-    <div className="relative mx-auto flex h-screen max-w-md flex-col overflow-hidden rounded-3xl border-2 border-red-500 bg-black/90 backdrop-blur-sm">
+    <div className="fixed end-0 bottom-0 z-50 flex h-[812px] w-[375px] flex-col overflow-hidden rounded-3xl border-2 border-red-500 bg-black/90 backdrop-blur-sm">
       {/* Background blur effect */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-20 blur-sm"
-        style={{
-          backgroundImage: `url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-4Ca7CGx8PyjQ2fy9mk6ad7EDT0JOkl.png')`,
-        }}
-      />
+      <div className="absolute inset-0 bg-[url('@assets/images/chat-bg.jpg')] bg-cover bg-center opacity-20 blur-sm" />
 
       <div className="relative z-10 flex h-full flex-col">
         <ChatHeader onMenuClick={handleMenuClick} />
+
         <ChatMessages messages={messages} />
         <ChatInput onSendMessage={handleSendMessage} />
       </div>
