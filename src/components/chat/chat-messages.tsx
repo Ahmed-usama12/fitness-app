@@ -8,7 +8,7 @@ interface ChatMessagesProps {
 
 export function ChatMessages({ messages }: ChatMessagesProps) {
   return (
-    <ScrollArea className="flex-1 p-4">
+    <ScrollArea className="flex-1 overflow-auto p-4">
       <div className="space-y-4">
         {messages.map((message) => (
           <ChatMessage key={message.id} message={message} />
