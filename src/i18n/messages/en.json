@@ -47,7 +47,10 @@
   "enter-the-otp-you-have-received": "Enter The OTP You Have Received",
   "confirm": "Confirm",
   "didnt-receive-verification-code": "didn’t receive verification code?",
-
+  "explore": "Explore",
+  "explore-more": "ُExplore More",
+  "get-started": "Get Started",
+  "no-items": "There are no items to display",
   "hero-section": {
     "title": "YOUR BODY CAN <span>STAND ALMOST</span> ANYTHING",
     "message": "It's your mind that needs convincing. Push past your limits, stay committed, and watch as your body transform into powerhouse of strength and resilience. Start your journey today & truly capable of",
@@ -73,5 +76,9 @@
     "qe-parag": "Our gym is equipped with the latest cardio & strength machines.",
     "hn-parag": "Fuel your fitness journey with customized meal plans for you.",
     "get-started": "Get Started"
+  },
+  "workouts-section": {
+    "fitness-class": "Fitness Class",
+    "nav-paragraph": "Transform Your Body with Our Dynamic <span>Upcoming Workouts</span>"
   }
 }

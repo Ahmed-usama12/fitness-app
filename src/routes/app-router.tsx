@@ -2,7 +2,7 @@ import MainLayout from "@/app/layout";
 import AuthLayout from "@/app/pages/auth/layout";
 import Login from "@/app/pages/auth/login";
 import Register from "@/app/pages/auth/register";
-import Classes from "@/app/pages/classes/page";
+
 import Healthy from "@/app/pages/healthy/page";
 import Homepage from "@/app/pages/home/page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -11,6 +11,7 @@ import { Toaster } from "@/components/ui/sonner";
 import ResetPassword from "@/app/pages/auth/forgot-password/page";
 import StepsRestPassProvider from "@/context/step-reset-pass/provider";
 import About from "@/app/pages/about/page";
+import WorkoutsLayout from "@/app/pages/classes/layout";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
@@ -24,7 +25,7 @@ export default function AppRouter() {
       children: [
         { index: true, element: <Homepage /> },
         { path: "/about", element: <About /> },
-        { path: "/classes", element: <Classes /> },
+        { path: "/classes", element: <WorkoutsLayout /> },
         { path: "/healthy", element: <Healthy /> },
       ],
     },

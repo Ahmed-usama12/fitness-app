@@ -21,7 +21,7 @@ declare type User = {
   resetCodeVerified?: boolean;
 } & DatabaseFields;
 
-declare type SuccessfullResponse<T> = {
+declare type SuccessfulResponse<T> = {
   message: string;
 } & T;
 
@@ -29,7 +29,7 @@ declare type ErrorResponse = {
   error: string;
 };
 
-declare type SuccessfullVerifyCode = {
+declare type SuccessfulVerifyCode = {
   status: string;
 };
 
@@ -37,6 +37,6 @@ declare type SuccessVerifyCode = {
   status: "Success";
 };
 
-declare type APIResponse<T> = SuccessfullResponse<T> | ErrorResponse;
+declare type APIResponse<T> = SuccessfulResponse<T> | ErrorResponse;
 
-declare type VerfiyResponse = SuccessVerifyCode | ErrorResponse;
+declare type VerifyResponse = SuccessVerifyCode | ErrorResponse;
