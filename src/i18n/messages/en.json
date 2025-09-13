@@ -56,5 +56,20 @@
   "weight-message": "Weight must be at least 20 kg",
   "goal-message": "Goal is required",
   "level-message": "Please select your activity level",
-  "pass-repass-message": "Passwords do not match"
+  "pass-repass-message": "Passwords do not match",
+  "why-us": "WHY US",
+  "why-us-content": "We offer a fitness journey that's tailored to your goals, supported by professional trainers and a welcoming community. Whether it's weight loss, strength building, or overall wellness, our proven methods.",
+  "feature-one-head": "Personalized Fitness Plans",
+  "feature-one-content": "We tailor every workout to fit your unique goals and fitness level ensuring that you make the most progress.",
+  "Feature-two-head": "Results-Driven Focus",
+  "Feature-two-content": "Everything we do is designed to help you achieve measurable results, whether you're aiming for weight loss.",
+  "Feature-three-head": "State-Of-The-Art Equipment",
+  "Feature-three-content": "We provide the latest in gym equipment, from cardio machines to free weights, designed to support every type.",
+  "why-us-title": "ELEVATE FITNESS WITH THE <highlight>BEST WAY</highlight> POSSIBLE",
+  "healthy-nutritions": "Healthy Nutritions",
+  "Health-title": "FUEL YOUR FITNESS JOURNEY WITH CUSTOMIZED <highlight>MEAL PLANS</highlight> FOR YOU",
+  "breackfast": "BREACKFAST",
+  "read-more": "Read More",
+  "lunch": "LUNCH",
+  "dinner": "DINNER"
 }
