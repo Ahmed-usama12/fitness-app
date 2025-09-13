@@ -1,8 +1,7 @@
-"use client";
-
 import { CircleX, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useChat } from "@/context/chat-context/hooks";
+import { useTranslations } from "use-intl";
 
 interface ChatHeaderProps {
   onMenuClick: () => void;
@@ -11,10 +10,16 @@ interface ChatHeaderProps {
 export function ChatHeader({ onMenuClick }: ChatHeaderProps) {
   // Context
   const { setShow } = useChat();
+
+  //Translations
+  const t = useTranslations();
+
   return (
-    <header className="relative flex items-center justify-between bg-black/50 p-4 backdrop-blur-sm">
-      <h1 className="text-xl font-semibold text-white">Smart Coach</h1>
+    <header className="flex items-center justify-between bg-black/50 p-4 backdrop-blur-sm">
+      {/* Title */}
+      <h1 className="text-xl font-semibold text-white">{t("smart-coach")}</h1>
       <div className="flex items-center justify-center gap-2">
+        {/* Menu Button */}
         <Button
           icon={false}
           variant="ghost"
@@ -24,6 +29,7 @@ export function ChatHeader({ onMenuClick }: ChatHeaderProps) {
         >
           <Menu className="size-6" />
         </Button>
+        {/* Close Button */}
         <CircleX onClick={() => setShow(false)} className="size-6 cursor-pointer" />
       </div>
     </header>

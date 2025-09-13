@@ -3,6 +3,6 @@ import { ChatbotShow } from "./context";
 
 export function useChat() {
   const ctx = useContext(ChatbotShow);
-  if (!ctx) throw new Error("useStepResetPass must be used within StepsRestPassProvider");
+  if (!ctx) throw new Error("useChat must be used within ChatBotContext");
   return ctx;
 }

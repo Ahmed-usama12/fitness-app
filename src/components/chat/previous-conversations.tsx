@@ -1,55 +1,42 @@
-"use client";
-
-import { X, ChevronRight } from "lucide-react";
+import { X, ChevronRight, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "use-intl";
 
-interface Conversation {
+interface Chat {
   id: string;
-  title: string;
-  lastMessage: string;
+  content: string;
+  sender: "user" | "ai";
   timestamp: Date;
+}
+
+interface MessageWrapper {
+  id: string;
+  chats: Chat[];
+  title: string;
+  createdAt: Date;
 }
 
 interface PreviousConversationsProps {
   isOpen: boolean;
   onClose: () => void;
+  conversations: MessageWrapper[];
+  currentChatId: string;
+  onSelectChat: (chatId: string) => void;
+  onNewChat: () => void;
 }
 
-export function PreviousConversations({ isOpen, onClose }: PreviousConversationsProps) {
-  // Mock conversation data
-  const conversations: Conversation[] = [
-    {
-      id: "1",
-      title: "Lorem ipsum dolor sit amet",
-      lastMessage: "Thank you for your help!",
-      timestamp: new Date(),
-    },
-    {
-      id: "2",
-      title: "Lorem ipsum dolor sit amet",
-      lastMessage: "That was very helpful",
-      timestamp: new Date(),
-    },
-    {
-      id: "3",
-      title: "Lorem ipsum dolor sit amet",
-      lastMessage: "I understand now",
-      timestamp: new Date(),
-    },
-    {
-      id: "4",
-      title: "Lorem ipsum dolor sit amet",
-      lastMessage: "Perfect explanation",
-      timestamp: new Date(),
-    },
-    {
-      id: "5",
-      title: "Lorem ipsum dolor sit amet",
-      lastMessage: "Thanks for the advice",
-      timestamp: new Date(),
-    },
-  ];
+export function PreviousConversations({
+  isOpen,
+  onClose,
+  conversations,
+  currentChatId,
+  onSelectChat,
+  onNewChat,
+}: PreviousConversationsProps) {
+  // Translations
+  const t = useTranslations();
 
+  // Render
   return (
     <>
       {/* Backdrop */}
@@ -69,31 +56,75 @@ export function PreviousConversations({ isOpen, onClose }: PreviousConversations
         <div className="flex h-full flex-col">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-gray-700 p-4">
-            <h2 className="text-lg font-semibold text-white">Previous Conversations</h2>
-            <Button
-              icon={false}
-              variant="ghost"
-              size="icon"
-              onClick={onClose}
-              className="text-white hover:bg-white/10"
-            >
-              <X className="h-5 w-5" />
-            </Button>
+            <h2 className="text-lg font-semibold text-white">{t("previous-conversations")}</h2>
+            <div className="flex items-center gap-2">
+              {/* New Chat Button */}
+              <Button
+                icon={false}
+                variant="ghost"
+                size="icon"
+                onClick={onNewChat}
+                className="size-6 text-white hover:bg-white/10"
+                title="New Chat"
+              >
+                <Plus className="h-5 w-5" />
+              </Button>
+
+              {/* Close Button */}
+              <Button
+                icon={false}
+                variant="ghost"
+                size="icon"
+                onClick={onClose}
+                className="size-6 text-white hover:bg-white/10"
+              >
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
           </div>
 
           {/* Conversations List */}
           <div className="flex-1 overflow-y-auto">
-            {conversations.map((conversation) => (
-              <div
-                key={conversation.id}
-                className="group flex cursor-pointer items-center justify-between border-b border-gray-800/50 p-4 hover:bg-white/5"
-              >
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm text-white">{conversation.title}</p>
-                </div>
-                <ChevronRight className="h-4 w-4 text-gray-400 transition-colors group-hover:text-white" />
+            {conversations.length === 0 ? (
+              <div className="p-4 text-center text-gray-400">
+                <p className="text-sm">{t("no-conversations-yet")}</p>
+                <p className="mt-1 text-xs">{t("start-a-new-chat-to-begin")}</p>
               </div>
-            ))}
+            ) : (
+              conversations.map((conversation) => {
+                const lastMessage = conversation.chats[conversation.chats.length - 1];
+                const isActive = conversation.id === currentChatId;
+
+                return (
+                  <div
+                    key={conversation.id}
+                    onClick={() => {
+                      onSelectChat(conversation.id);
+                      onClose();
+                    }}
+                    className={`group flex cursor-pointer items-center justify-between border-b border-gray-800/50 p-4 hover:bg-white/5 ${
+                      isActive ? "bg-white/10" : ""
+                    }`}
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-medium text-white">
+                        {conversation.title}
+                      </p>
+                      {lastMessage && (
+                        <p className="mt-1 truncate text-xs text-gray-400">
+                          {lastMessage.content.slice(0, 50)}
+                          {lastMessage.content.length > 50 ? "..." : ""}
+                        </p>
+                      )}
+                      <p className="mt-1 text-xs text-gray-500">
+                        {new Date(conversation.createdAt).toLocaleDateString()}
+                      </p>
+                    </div>
+                    <ChevronRight className="h-4 w-4 text-gray-400 transition-colors group-hover:text-white" />
+                  </div>
+                );
+              })
+            )}
           </div>
         </div>
       </div>

@@ -1,19 +1,22 @@
-"use client";
-
 import type React from "react";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
+import { useTranslations } from "use-intl";
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
 }
 
 export function ChatInput({ onSendMessage }: ChatInputProps) {
+  // State
   const [message, setMessage] = useState("");
 
+  const t = useTranslations();
+
+  // Handle submit
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (message.trim()) {
@@ -24,16 +27,20 @@ export function ChatInput({ onSendMessage }: ChatInputProps) {
 
   return (
     <div className="p-4 backdrop-blur-sm">
+      {/* Form */}
       <form onSubmit={handleSubmit} className="flex items-center gap-2">
+        {/* Input */}
         <div className="relative flex-1">
           <Input
             type="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="Ask Me Any Things"
+            placeholder={t("ask-me-any-things")}
             className="w-full rounded-full text-white placeholder:text-gray-400"
           />
         </div>
+
+        {/* Button */}
         <Button
           icon={false}
           type="submit"

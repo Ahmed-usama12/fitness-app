@@ -1,9 +1,9 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import type { Message } from "./smart-coach-chat";
+import type { Chat } from "./smart-coach-chat";
 import { Bot, User } from "lucide-react";
 
 interface ChatMessageProps {
-  message: Message;
+  message: Chat;
 }
 
 export function ChatMessage({ message }: ChatMessageProps) {
