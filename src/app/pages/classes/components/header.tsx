@@ -8,6 +8,7 @@ export default function WorkoutHeader() {
   const locale = useLocale();
   return (
     <div className="relative h-16">
+      {/*Text background */}
       <svg
         width={370}
         height={65}
@@ -32,6 +33,8 @@ export default function WorkoutHeader() {
           WORKOUTS
         </text>
       </svg>
+
+      {/* text */}
       <span className="text-main font-baloo absolute left-1/2 z-10 flex -translate-x-1/2 translate-y-3 items-end gap-3 text-lg font-semibold md:bottom-1">
         <Dumbbell className="rotate-45" width={34} height={30} />
         {t("fitness-class")}

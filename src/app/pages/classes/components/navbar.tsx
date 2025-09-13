@@ -5,10 +5,12 @@ import useNavbar from "../hooks/use-navbar";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
+  // hook
   const { groups, locale, t, muscleGroupId, setMuscleGroupId } = useNavbar();
 
   return (
     <>
+      {/* navbar paragraph */}
       <p className="font-baloo mx-auto max-w-xl text-3xl font-bold md:text-[40px]">
         {t.rich("nav-paragraph", { span: (value) => <span className="text-main">{value}</span> })}
       </p>

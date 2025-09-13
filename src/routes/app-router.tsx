@@ -10,8 +10,9 @@ import ProtectedRoute from "./protected-route";
 import { Toaster } from "@/components/ui/sonner";
 import ResetPassword from "@/app/pages/auth/forgot-password/page";
 import StepsRestPassProvider from "@/context/step-reset-pass/provider";
-import About from "@/app/pages/about/page";
+
 import WorkoutsLayout from "@/app/pages/classes/layout";
+import AboutLayout from "@/app/pages/about/layout";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
@@ -24,7 +25,7 @@ export default function AppRouter() {
       ),
       children: [
         { index: true, element: <Homepage /> },
-        { path: "/about", element: <About /> },
+        { path: "/about", element: <AboutLayout /> },
         { path: "/classes", element: <WorkoutsLayout /> },
         { path: "/healthy", element: <Healthy /> },
       ],
