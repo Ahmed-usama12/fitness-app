@@ -15,6 +15,8 @@ import { useLoginSchema, type LoginFields } from "@/lib/schema/auth.schema";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from "use-intl";
 import { useLogin } from "@/hooks/use-login";
+import { PasswordInput } from "@/components/ui/password-input";
+import { useState } from "react";
 
 export default function Login() {
     //schema
@@ -26,13 +28,20 @@ export default function Login() {
         resolver: zodResolver(schema)
     })
 
+    //error
+    const [formError, setFormError] = useState<string | null>(null);
+
     // use login hook
     const { mutate: loginUser, isPending } = useLogin();
 
     //submit
     const onSubmit = async (values: LoginFields) => {
-        console.log(values);
-        loginUser(values);
+        setFormError(null); // clear old errors
+        loginUser(values, {
+            onError: (error) => {
+                setFormError(error.response?.data.error ?? null);
+            },
+        });
     }
 
     //translation
@@ -74,11 +83,16 @@ export default function Login() {
                             control={form.control}
                             render={({ field }) => <FormItem>
                                 <FormControl>
-                                    <Input {...field} type="password" placeholder={t('password')} />
+                                    <PasswordInput {...field} placeholder={t('password')} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>}
                         />
+
+                        {/* API error message */}
+                        {formError && (
+                            <p className="text-red-500 text-sm">{formError}</p>
+                        )}
 
                         {/*Forget Password*/}
                         <Link to={"/auth/forgot-password"} className="underline text-[#FF4100] font-bold text-end block">{t('forget-password')}</Link>
