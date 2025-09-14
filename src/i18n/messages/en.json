@@ -1,10 +1,12 @@
 {
 	"homepage": "Hello world!",
-	    "footer": {
-        "Slogan1":"Push harder, go further.",
-        "Slogan2":"fitness journey starts today!",
-		"contact":"contact us",
+	"footer": {
+		"Slogan1": "Push harder, go further.",
+		"Slogan2": "fitness journey starts today!",
+		"contact": "contact us",
 		"GymTiming": "our gym timing",
-		"OurLocation": "our location"
-    }
+		"OurLocation": "our location",
+		"gym-timing-one": "Mon - Fri : 08:00 AM - 10:00 PM",
+		"gym-timing-two": "Sat - Sun : 08:00 AM - 09:00 PM"
+	}
 }
