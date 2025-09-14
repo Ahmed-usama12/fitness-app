@@ -8,6 +8,7 @@ import type {
 } from "../schema/auth.schema";
 import { apiRequest } from "../utils/fetcher";
 import { toast } from "sonner";
+import type { AuthResponse, ForgotPasswordResponse, NewPasswordResponse } from "../types/auth";
 
 //Login
 export const login = async (values: LoginFields): Promise<APIResponse<AuthResponse>> => {
@@ -38,9 +39,9 @@ export const newPassword = async (
 };
 
 // Verify Code
-export const sendCode = async (values: VerifyCodeFields): Promise<VerfiyResponse> => {
+export const sendCode = async (values: VerifyCodeFields): Promise<VerifyResponse> => {
   try {
-    const { data } = await axios.post<VerfiyResponse>(`${API_URL}/auth/verifyResetCode`, values);
+    const { data } = await axios.post<VerifyResponse>(`${API_URL}/auth/verifyResetCode`, values);
 
     if ("error" in data) {
       toast.error(data.error);
@@ -53,7 +54,7 @@ export const sendCode = async (values: VerifyCodeFields): Promise<VerfiyResponse
     if (axios.isAxiosError(error) && error.response) {
       const apiError = error.response.data as ErrorResponse;
       toast.error(apiError.error);
-      return error.response.data as VerfiyResponse;
+      return error.response.data as VerifyResponse;
     }
     throw error;
   }

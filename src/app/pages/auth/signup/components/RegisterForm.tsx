@@ -14,7 +14,6 @@ import { Link } from "react-router-dom";
 import { Facebook } from "lucide-react";
 import { useRegisterContext } from "@/lib/context/RegisterContext";
 import { z } from "zod";
-import { useEffect } from "react";
 import { Separator } from "@/components/ui/separator";
 import type { Register } from "@/lib/types/auth";
 import { useTranslations } from "use-intl";
@@ -37,10 +36,6 @@ export default function RegisterForm() {
     },
     mode: "onChange",
   });
-  // Hook
-  useEffect(() => {
-    console.log("Current formData:", formData);
-  }, [formData]);
 
   // Function
   const onSubmit: SubmitHandler<Register> = (values) => {
@@ -73,18 +68,15 @@ export default function RegisterForm() {
       {/* Title */}
       <div className="font-baloo flex flex-col items-center">
         <h4>{t("hey")}</h4>
-        <h1 className="font-black text-5xl">{t("create-account")}</h1>
+        <h1 className="text-5xl font-black">{t("create-account")}</h1>
       </div>
 
-      <div className="w-[486px] border-4 rounded-4xl my-7 py-10 px-20 flex flex-col items-center">
+      <div className="my-7 flex w-[486px] flex-col items-center rounded-4xl border-4 px-20 py-10">
         {/* Form Headline */}
-        <h2 className="pb-4 font-baloo">{t("register-headline")}</h2>
+        <h2 className="font-baloo pb-4">{t("register-headline")}</h2>
         {/* Form */}
         <Form {...form}>
-          <form
-            className="w-full space-y-4"
-            onSubmit={form.handleSubmit(onSubmit)}
-          >
+          <form className="w-full space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
             {/* First Name */}
             <FormField
               control={form.control}
@@ -167,32 +159,32 @@ export default function RegisterForm() {
 
             {/* Forget Password Link */}
             <div className="flex justify-end">
-              <Link to="" className="font-baloo underline text-main text-base">
+              <Link to="" className="font-baloo text-main text-base underline">
                 {t("forget-password")}
               </Link>
             </div>
 
             {/* Separetor */}
-            <div className="flex items-center w-full gap-2">
+            <div className="flex w-full items-center gap-2">
               <Separator className="flex-1" />
               <span className="text-sm text-gray-400">{t("or")}</span>
               <Separator className="flex-1" />
             </div>
 
             {/* Social Icons */}
-            <div className="flex justify-center gap-3 items-center">
-              <div className="bg-[#242424] p-2 rounded-full w-fit">
+            <div className="flex items-center justify-center gap-3">
+              <div className="w-fit rounded-full bg-[#242424] p-2">
                 <Facebook className="text-white" />
               </div>
-              <div className="bg-[#242424] p-2 rounded-full w-fit">
+              <div className="w-fit rounded-full bg-[#242424] p-2">
                 <Facebook className="text-white" />
               </div>
-              <div className="bg-[#242424] p-2 rounded-full w-fit">
+              <div className="w-fit rounded-full bg-[#242424] p-2">
                 <Facebook className="text-white" />
               </div>
             </div>
             {/* Button */}
-            <Button type="submit" className="w-full font-baloo" icon={false}>
+            <Button type="submit" className="font-baloo w-full" icon={false}>
               {t("register-headline")}
             </Button>
           </form>

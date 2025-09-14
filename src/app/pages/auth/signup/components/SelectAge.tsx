@@ -1,14 +1,10 @@
 import { NumberCarouselSelector } from "@/components/layout/number-selector";
 import { useRegisterContext } from "@/lib/context/RegisterContext";
 import { Button } from "@/components/ui/button";
-import { useTranslations } from "use-intl";
 
 export default function SelectAge() {
   // context
   const { formData, setFormData, setStep } = useRegisterContext();
-
-  // Translation
-  const t = useTranslations();
 
   // send age to context
   const handleAgeChange = (age: number) => {
@@ -25,13 +21,11 @@ export default function SelectAge() {
   };
 
   return (
-    <div className="flex flex-col items-center p-6 bg-amber-950 text-white">
+    <div className="flex flex-col items-center p-6 text-white">
       {/* Headline */}
-      <div className="font-baloo flex flex-col items-center mb-6">
-        <h1 className="font-black text-5xl">How Old Are You?</h1>
-        <h4 className="font-light text-xl">
-          This helps us create Your personalized plan
-        </h4>
+      <div className="font-baloo mb-6 flex flex-col items-center">
+        <h1 className="text-5xl font-black">How Old Are You?</h1>
+        <h4 className="text-xl font-light">This helps us create Your personalized plan</h4>
       </div>
 
       {/* Carousel */}
@@ -48,7 +42,7 @@ export default function SelectAge() {
       {/* Next Button */}
       <Button
         onClick={handleNext}
-        className="w-full font-baloo bg-main rounded-full "
+        className="font-baloo bg-main w-full rounded-full"
         disabled={formData.age < 18}
         icon={false}
         type="submit"

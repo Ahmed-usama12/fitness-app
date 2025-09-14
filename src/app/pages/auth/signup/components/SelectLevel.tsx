@@ -34,15 +34,14 @@ export default function SelectLevel() {
 
   useEffect(() => {
     fetchLevels();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Functions
   const handleNext = () => {
     if (!selectedLevelId || !levels) return;
 
-    const selectedIndex = levels.findIndex(
-      (lvl) => lvl._id === selectedLevelId
-    );
+    const selectedIndex = levels.findIndex((lvl) => lvl._id === selectedLevelId);
     if (selectedIndex === -1) return;
 
     const selectedLevelValue = `level${selectedIndex + 1}`;
@@ -54,17 +53,18 @@ export default function SelectLevel() {
 
     const parsed = registrationSchema.safeParse(updatedFormData);
     if (!parsed.success) {
-      toast.error("ٌRegister Fail");
+      toast.error(t("register-fail"));
       return;
     }
 
     setFormData(updatedFormData);
-    RegisterSubmit(updatedFormData);
+
+    RegisterSubmit(parsed.data);
   };
 
   if (isLevelsLoading) {
     // i will make skeleton
-    return <p className="text-center py-6">Loading levels...</p>;
+    return <p className="py-6 text-center">Loading levels...</p>;
   }
 
   if (levelsError) {
@@ -74,45 +74,33 @@ export default function SelectLevel() {
   return (
     <div className="flex flex-col items-center">
       {/* Headline */}
-      <div className="flex flex-col items-center py-4 mb-2">
-        <h1 className="font-bold font-baloo text-4xl w-96 text-center">
+      <div className="mb-2 flex flex-col items-center py-4">
+        <h1 className="font-baloo w-96 text-center text-4xl font-bold">
           your regular physical activity level?
         </h1>
-        <h4 className="font-baloo font-extralight text-lg py-2">
+        <h4 className="font-baloo py-2 text-lg font-extralight">
           This helps us create your personalized plan
         </h4>
       </div>
 
       {/* Levels */}
-      <RadioGroup
-        value={selectedLevelId}
-        onValueChange={setSelectedLevelId}
-        className="my-4"
-      >
+      <RadioGroup value={selectedLevelId} onValueChange={setSelectedLevelId} className="my-4">
         {levels?.slice(0, 5).map((level: Level, index: number) => {
           const isSelected = selectedLevelId === level._id;
           return (
             <div
               key={level._id}
               onClick={() => setSelectedLevelId(level._id)}
-              className={`w-80 p-2 px-3.5 rounded-2xl flex justify-between items-center mb-2 cursor-pointer border-2 ${
+              className={`mb-2 flex w-80 cursor-pointer items-center justify-between rounded-2xl border-2 p-2 px-3.5 ${
                 isSelected ? "border-main text-main" : "border-white text-white"
               }`}
             >
-              <span className={isSelected ? "text-main" : "text-white"}>
-                {level.name}
-              </span>
-              <RadioGroupItem
-                value={level._id}
-                id={`level-${index}`}
-                className="cursor-pointer"
-              />
+              <span className={isSelected ? "text-main" : "text-white"}>{level.name}</span>
+              <RadioGroupItem value={level._id} id={`level-${index}`} className="cursor-pointer" />
             </div>
           );
         })}
       </RadioGroup>
-
-      <p>test</p>
 
       {/* Register Button */}
       <Button

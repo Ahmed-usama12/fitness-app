@@ -5,11 +5,9 @@ import { toast } from "sonner";
 
 export default function useRegister() {
   const { error, mutate, isPending } = useMutation({
-    mutationFn: async (registerFiled: RegistrationFields) =>
-      await registerAction(registerFiled),
+    mutationFn: async (registerFiled: RegistrationFields) => await registerAction(registerFiled),
     onSuccess() {
       toast.success("Account Created Successfully");
-      console.log("Account Created Successfully");
     },
     onError(error: Error) {
       console.error("Registration Error:", error.message);

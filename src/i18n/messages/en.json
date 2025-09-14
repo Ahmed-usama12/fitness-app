@@ -29,8 +29,8 @@
   "t": "test",
   "gender-headline": "TELL US ABOUT YOURSELF!",
   "ask-for-gender": "We Need To Know Your Gender",
-  "male": "Male",
-  "female": "Female",
+  "male": "male",
+  "female": "female",
   "next-btn": "Next",
   "hey": "Hey There",
   "create-account": "Create An Account",
@@ -116,5 +116,6 @@
     "or": "Or",
     "dont-have-an-account": "Dont have an account yet ?",
     "register": " Register"
-  }
+  },
+  "register-fail": "Register Fail"
 }

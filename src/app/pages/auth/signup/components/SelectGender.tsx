@@ -2,17 +2,12 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useRegisterContext } from "@/lib/context/RegisterContext";
 import { Mars, Venus } from "lucide-react";
-import { useTranslations } from "use-intl";
 
 export default function SelectGender() {
-  // Translaions
-  const t = useTranslations();
   // context
   const { formData, setFormData, setStep } = useRegisterContext();
   // Hooks
-  const [selectedGender, setSelectedGender] = useState<
-    "male" | "female" | null
-  >(null);
+  const [selectedGender, setSelectedGender] = useState<"male" | "female" | null>(null);
 
   // Functions
   const handleSelect = (gender: "male" | "female") => {
@@ -28,13 +23,9 @@ export default function SelectGender() {
   return (
     <div className="flex flex-col items-center">
       {/* Headline */}
-      <div className="flex flex-col items-center py-4 mb-2">
-        <h1 className="font-bold font-baloo text-4xl">
-          TELL US ABOUT YOURSELF!
-        </h1>
-        <h4 className="font-baloo font-extralight text-lg py-2">
-          We Need To Know Your Gender
-        </h4>
+      <div className="mb-2 flex flex-col items-center py-4">
+        <h1 className="font-baloo text-4xl font-bold">TELL US ABOUT YOURSELF!</h1>
+        <h4 className="font-baloo py-2 text-lg font-extralight">We Need To Know Your Gender</h4>
       </div>
 
       {/* Genders */}
@@ -43,14 +34,13 @@ export default function SelectGender() {
         <button
           onClick={() => handleSelect("male")}
           type="button"
-          className={`w-24 h-24 flex flex-col items-center justify-center rounded-full border-2 text-white cursor-pointer transition 
-            ${
-              selectedGender === "male"
-                ? "bg-white text-black border-white"
-                : "border-white text-black hover:bg-white hover:text-black"
-            }`}
+          className={`flex h-24 w-24 cursor-pointer flex-col items-center justify-center rounded-full border-2 text-black transition ${
+            selectedGender === "male"
+              ? "border-white bg-white text-black"
+              : "border-white text-black hover:bg-white"
+          }`}
         >
-          <Mars className="w-6 h-6 mb-1" />
+          <Mars className="mb-1 h-6 w-6" />
           <span className="text-sm">Male</span>
         </button>
 
@@ -58,21 +48,20 @@ export default function SelectGender() {
         <button
           onClick={() => handleSelect("female")}
           type="button"
-          className={`w-24 h-24 flex flex-col items-center justify-center rounded-full border-2 text-white cursor-pointer transition 
-            ${
-              selectedGender === "female"
-                ? "bg-white text-black border-white"
-                : "border-white text-black hover:bg-white hover:text-black"
-            }`}
+          className={`flex h-24 w-24 cursor-pointer flex-col items-center justify-center rounded-full border-2 text-black transition ${
+            selectedGender === "female"
+              ? "border-white bg-white text-black"
+              : "border-white text-black hover:bg-white"
+          }`}
         >
-          <Venus className="w-6 h-6 mb-1" />
+          <Venus className="mb-1 h-6 w-6" />
           <span className="text-sm">Female</span>
         </button>
       </div>
       {/* Next Button */}
       <Button
         type="button"
-        className="w-80 mt-5"
+        className="mt-5 w-80"
         onClick={handleNext}
         disabled={!selectedGender}
         icon={false}

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import type { Register } from "@/lib/types/auth";
 
 // 1) define context type
@@ -13,11 +13,7 @@ type RegisterContextType = {
 const RegisterContext = createContext<RegisterContextType | null>(null);
 
 // 3) provider
-export const RegisterProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const RegisterProvider = ({ children }: { children: React.ReactNode }) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState<Register>({
     firstName: "",
@@ -25,19 +21,13 @@ export const RegisterProvider = ({
     email: "" as `${string}@${string}`,
     password: "",
     rePassword: "",
-    gender: "male",
+    gender: "",
     height: 0,
     weight: 0,
     age: 0,
     goal: "",
     activityLevel: "",
   });
-  useEffect(() => {
-    console.log(
-      `[RegisterProvider] Step ${step} - Current formData:`,
-      formData
-    );
-  }, [step, formData]);
 
   return (
     <RegisterContext.Provider value={{ step, setStep, formData, setFormData }}>

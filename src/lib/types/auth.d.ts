@@ -9,7 +9,7 @@ export type Register = {
   email: string;
   password: string;
   rePassword: string;
-  gender: "male" | "female";
+  gender: string;
   height: number;
   weight: number;
   age: number;
