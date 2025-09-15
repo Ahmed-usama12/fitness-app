@@ -1,10 +1,13 @@
 import Providers from "./components/providers";
+import LoginContextProvider from "./context/login-context";
 import AppRouter from "./routes/app-router";
 
 function App() {
 	return (
 		<Providers>
-			<AppRouter />
+			<LoginContextProvider>
+				<AppRouter />
+			</LoginContextProvider>
 		</Providers>
 	);
 }

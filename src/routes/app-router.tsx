@@ -1,7 +1,6 @@
 import MainLayout from "@/app/layout";
 import AuthLayout from "@/app/pages/auth/layout";
-import Login from "@/app/pages/auth/login";
-import Register from "@/app/pages/auth/register";
+
 import Classes from "@/app/pages/classes/page";
 import Healthy from "@/app/pages/healthy/page";
 import Homepage from "@/app/pages/home/page";
@@ -11,6 +10,8 @@ import { Toaster } from "@/components/ui/sonner";
 import ResetPassword from "@/app/pages/auth/forgot-password/page";
 import StepsRestPassProvider from "@/context/step-reset-pass/provider";
 import About from "@/app/pages/about/page";
+import Login from "@/app/pages/auth/login/page";
+import Register from "@/app/pages/auth/signup/page";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([

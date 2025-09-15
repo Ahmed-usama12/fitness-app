@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import { Mail, User } from "lucide-react";
+import { Lock, Mail, User } from "lucide-react";
 
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   return (
@@ -19,6 +19,12 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
       <div className="text-zinc-300  w-fit h-fit  absolute top-1/2 left-4 -translate-y-1/2">
         {type === "email" ? (
           <Mail
+            strokeWidth={1}
+            width={20}
+            height={20}
+          />
+        ) : type === "password" ? (
+          <Lock
             strokeWidth={1}
             width={20}
             height={20}
