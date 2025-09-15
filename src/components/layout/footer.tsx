@@ -46,7 +46,7 @@ export default function Footer() {
             <div>
                 <h3 className='capitalize font-bold text-lg pb-7'>{t("GymTiming")}</h3>
                 <p>{t("gym-timing-one")}</p>
-                <p>{t("gym-timing-one")}</p>
+                <p>{t("gym-timing-two")}</p>
             </div>
 
             {/* Location */}
