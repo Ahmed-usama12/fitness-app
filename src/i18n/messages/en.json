@@ -1,8 +1,16 @@
 {
   "homepage": "Hello world!",
+  "footer": {
+    "Slogan1": "Push harder, go further.",
+    "Slogan2": "fitness journey starts today!",
+    "contact": "contact us",
+    "GymTiming": "our gym timing",
+    "OurLocation": "our location",
+    "gym-timing-one": "Mon - Fri : 08:00 AM - 10:00 PM",
+    "gym-timing-two": "Sat - Sun : 08:00 AM - 09:00 PM"
+  },
   "email-empty": "The part before @ cannot be empty",
   "long-email": "The part after @ must be at most 64 characters long",
-
   "login": "LOGIN",
   "signup": "SIGN UP",
   "logo": "Fitness App Logo",
@@ -47,7 +55,6 @@
   "enter-the-otp-you-have-received": "Enter The OTP You Have Received",
   "confirm": "Confirm",
   "didnt-receive-verification-code": "didn’t receive verification code?",
-
   "hero-section": {
     "title": "YOUR BODY CAN <span>STAND ALMOST</span> ANYTHING",
     "message": "It's your mind that needs convincing. Push past your limits, stay committed, and watch as your body transform into powerhouse of strength and resilience. Start your journey today & truly capable of",
