@@ -1,3 +1,9 @@
+import RecipeSection from "./recipe-section/page";
+
 export default function Healthy() {
-  return <div>about</div>;
+  return (
+    <>
+      <RecipeSection />
+    </>
+  );
 }
