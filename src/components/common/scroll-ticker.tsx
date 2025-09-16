@@ -34,7 +34,7 @@ export default function ScrollTicker() {
             className="flex w-fit basis-auto items-center gap-3 py-6 text-lg font-bold text-zinc-50"
           >
             <span>{content[index % content.length]}</span>
-            <img src={star} className="size-5" />
+            <img src={star} className="size-5" alt="star icon" />
           </CarouselItem>
         ))}
       </CarouselContent>
