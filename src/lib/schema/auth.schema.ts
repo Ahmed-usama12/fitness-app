@@ -1,6 +1,6 @@
 import { useTranslations } from "use-intl";
 import { z } from "zod";
-import { emailSchema, passwordSchema } from "./common.schema";
+import { emailSchema, LoginPasswordSchema, passwordSchema } from "./common.schema";
 
 //Login Schema
 function useLoginSchema() {
@@ -9,7 +9,7 @@ function useLoginSchema() {
 
   return z.object({
     email: emailSchema(t),
-    password: passwordSchema(t),
+    password: LoginPasswordSchema(t),
   });
 }
 

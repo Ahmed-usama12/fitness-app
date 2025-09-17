@@ -3,16 +3,16 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { login } from "@/lib/api/auth.api";
 import type { LoginFields } from "@/lib/schema/auth.schema";
-
-interface AuthResponse {
-    message: string;
-    token: string;
-}
+import { useLoginContext } from "@/context/login-context";
+import type { AxiosError } from "axios";
 
 export function useLogin() {
     const navigate = useNavigate();
 
-    return useMutation<AuthResponse, Error, LoginFields>({
+    //context
+    const { setToken, setUser } = useLoginContext();
+
+    return useMutation<AuthResponse, AxiosError<{ error: string }>, LoginFields>({
         mutationFn: async (values) => {
             const data = await login(values);
 
@@ -24,7 +24,10 @@ export function useLogin() {
         },
         onSuccess: (data) => {
             toast.success(data.message);
+            setToken(data.token);
+            setUser(data.user);
             localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
 
             //navigate
             setTimeout(() => {
@@ -32,7 +35,7 @@ export function useLogin() {
             }, 1000)
         },
         onError: (error) => {
-            toast.error(error.message || "error");
+            toast.error(error.response?.data?.error || "error");
         },
     });
 }
