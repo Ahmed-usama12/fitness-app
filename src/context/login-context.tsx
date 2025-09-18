@@ -4,25 +4,30 @@ import React, { createContext, useContext, useEffect, useState, type Dispatch, t
 interface LoginContextType {
     token: string | null,
     setToken: Dispatch<SetStateAction<string | null>>
+    user: User | null,
+    setUser: Dispatch<SetStateAction<User | null>>
 }
 //create context 
 export const LoginContext = createContext<LoginContextType | undefined>(undefined);
 
 export default function LoginContextProvider({ children }: { children: React.ReactNode }) {
-    //state
+    //states
     const [token, setToken] = useState<string | null>(null);
+    const [user, setUser] = useState<User | null>(null)
 
     //effect
     useEffect(() => {
         setToken(localStorage.getItem("token"))
-    },)
+        setUser(JSON.parse(localStorage.getItem("user") ?? "null"));
+    },[])
 
     return (
-        <LoginContext.Provider value={{ token, setToken }}>
+        <LoginContext.Provider value={{ token, setToken, user, setUser }}>
             {children}
         </LoginContext.Provider>
     )
 }
+
 //custom hook
 export function useLoginContext() {
     const context = useContext(LoginContext);
