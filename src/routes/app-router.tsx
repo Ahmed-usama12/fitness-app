@@ -12,6 +12,7 @@ import StepsRestPassProvider from "@/context/step-reset-pass/provider";
 import About from "@/app/pages/about/page";
 import Login from "@/app/pages/auth/login/page";
 import Register from "@/app/pages/auth/signup/page";
+import Profile from "@/app/pages/profile/page";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
@@ -27,6 +28,7 @@ export default function AppRouter() {
         { path: "/about", element: <About /> },
         { path: "/classes", element: <Classes /> },
         { path: "/healthy", element: <Healthy /> },
+        { path: "/profile", element: <Profile /> },
       ],
     },
     {

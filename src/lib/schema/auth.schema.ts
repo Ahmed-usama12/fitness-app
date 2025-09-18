@@ -1,6 +1,6 @@
 import { useTranslations } from "use-intl";
 import { z } from "zod";
-import { emailSchema, passwordSchema } from "./common.schema";
+import { emailSchema, LoginPasswordSchema, passwordSchema } from "./common.schema";
 
 //Login Schema
 function useLoginSchema() {
@@ -11,6 +11,16 @@ function useLoginSchema() {
     email: emailSchema(t),
     password: passwordSchema(t),
   });
+}
+
+//change password schema
+function useChangePasswordSchema() {
+  //Translation
+  const t = useTranslations();
+  return z.object({
+    password: LoginPasswordSchema(t),
+    newPassword: passwordSchema(t)
+  })
 }
 
 // Forgot password schema
@@ -83,9 +93,10 @@ type LoginFields = z.infer<ReturnType<typeof useLoginSchema>>;
 type ForgotPasswordFields = z.infer<ReturnType<typeof useForgotPasswordSchema>>;
 type VerifyCodeFields = z.infer<ReturnType<typeof useVerifyCodeSchema>>;
 type NewPasswordFields = z.infer<ReturnType<typeof useNewPasswordSchema>>;
+type ChangePasswordFields = z.infer<ReturnType<typeof useChangePasswordSchema>>
 
 // Export Schema
-export { useLoginSchema, useForgotPasswordSchema, useVerifyCodeSchema, useNewPasswordSchema };
+export { useLoginSchema, useForgotPasswordSchema, useVerifyCodeSchema, useNewPasswordSchema, useChangePasswordSchema };
 
 // Export Fields
 export {
@@ -93,4 +104,5 @@ export {
   type ForgotPasswordFields,
   type VerifyCodeFields,
   type NewPasswordFields,
+  type ChangePasswordFields
 };

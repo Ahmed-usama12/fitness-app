@@ -28,3 +28,9 @@ export const passwordSchema = (t: KeyTranslation) =>
     .refine((password) => /[!@#$%^&*]/.test(password), {
       message: t("must-include-a-special-character"),
     });
+
+//Login Password Schema
+export const LoginPasswordSchema = (t: KeyTranslation) =>
+  z
+    .string()
+    .min(1, { message: t("current-password-required") })
