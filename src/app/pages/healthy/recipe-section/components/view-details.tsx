@@ -1,10 +1,18 @@
-import heroImg from "@assets/images/3f1b97ac1d19ded33c496670ee9f22167b9fd16b.png";
+import { useMealsDetails } from "@/hooks/use-meals";
 
 export default function ViewDetails() {
+  const { payload, isError, isLoading } = useMealsDetails("52959");
+
+  console.log(payload);
+
   return (
     <section className="relative w-full overflow-hidden rounded-2xl">
       <div className="relative h-[520px] w-full">
-        <img src={heroImg} alt="Recipe Hero" className="h-full w-full object-cover" />
+        <img
+          src={payload?.meals[0].strMealThumb}
+          alt="Recipe Hero"
+          className="h-full w-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
         <div className="absolute inset-x-0 bottom-0 p-10 text-center">

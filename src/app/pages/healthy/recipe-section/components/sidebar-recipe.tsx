@@ -1,13 +1,10 @@
 import test from "@assets/images/about-man1.png";
+import SidbarHeader from "./sidbar-header";
 export default function SidebarRecipe() {
   return (
     <div className="col-span-2 w-[409px] space-y-4 rounded-xl border-2 p-4">
       {/* Links */}
-      <ul className="flex justify-center gap-4">
-        <li>Breakfast</li>
-        <li>Breakfast</li>
-        <li>Breakfast</li>
-      </ul>
+      <SidbarHeader />
 
       {/* Meals */}
       <div className="space-y-8">
