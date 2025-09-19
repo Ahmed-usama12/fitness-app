@@ -20,10 +20,6 @@ export default function Ingredients({ measures, ingreduents }: IngredientsProps)
             <span className="text-sm text-red-600 md:text-base">{measure}</span>
           </div>
         ))}
-
-        {/* {rows.map((row, idx) => (
-          <IngredientRow key={idx} {...row} isLast={idx === rows.length - 1} />
-        ))} */}
       </div>
     </section>
   );
