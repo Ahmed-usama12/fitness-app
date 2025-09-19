@@ -1,6 +1,5 @@
 import SidebarRecipe from "./components/sidebar-recipe";
 import ViewDetails from "./components/view-details";
-import Ingredients from "./components/ingredients";
 
 export default function RecipeSection() {
   return (
@@ -11,7 +10,6 @@ export default function RecipeSection() {
         <SidebarRecipe />
         <div className="flex-1">
           <ViewDetails />
-          <Ingredients />
         </div>
       </div>
     </div>
