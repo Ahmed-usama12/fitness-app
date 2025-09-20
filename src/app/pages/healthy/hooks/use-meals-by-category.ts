@@ -1,4 +1,3 @@
-// use-meals.ts
 import { GetMealsByCategory } from "@/lib/api/meals-categories.api";
 import { useQuery } from "@tanstack/react-query";
 

@@ -25,12 +25,13 @@ export default function MealsPage() {
       <MealsCategoriestHeader />
 
       <div className="absolute top-0 left-0 h-full w-full bg-zinc-50/40 px-5 pt-8 backdrop-blur-3xl dark:bg-zinc-800/60"></div>
-
       <div className="relative z-10 mt-6 w-full space-y-8 px-5 md:px-20">
+        {/* Navbar */}
         <MealsNavbar
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />
+        {/* Meals Section */}
         <MealsGrid selectedCategory={selectedCategory} />
       </div>
     </section>

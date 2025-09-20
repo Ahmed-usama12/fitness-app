@@ -106,7 +106,7 @@ export default function MealsGrid({ selectedCategory }: MealsNavbarProps) {
           </div>
         </Carousel>
       ) : (
-        <p className="text-main mt-20 text-center text-lg font-bold">No meals found</p>
+        <p className="text-main mt-20 text-center text-lg font-bold">{t("no-meals")}</p>
       )}
     </>
   );
