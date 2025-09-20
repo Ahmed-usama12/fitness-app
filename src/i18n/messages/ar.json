@@ -71,7 +71,6 @@
   "goal-message": "الهدف مطلوب",
   "level-message": "الرجاء تحديد مستوى نشاطك",
   "pass-repass-message": "كلمات المرور لا تتطابق",
-
   "code-length": "أكبر شيء هو أربعة أرقام.",
   "8-characters-required": "8 أحرف مطلوبة",
   "passwords-do-not-match": "كلمات المرور لا تتطابق",
@@ -145,5 +144,7 @@
     "or": "او",
     "dont-have-an-account": "ليس لديك حساب بعد؟",
     "register": " انشاء حساب"
-  }
+  },
+  "explore": "أستكشف",
+  "no-meals": "لم يتم العثور على وجبات"
 }

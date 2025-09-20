@@ -1,6 +1,5 @@
 import MainLayout from "@/app/layout";
 import AuthLayout from "@/app/pages/auth/layout";
-
 import Classes from "@/app/pages/classes/page";
 import Healthy from "@/app/pages/healthy/page";
 import Homepage from "@/app/pages/home/page";
@@ -12,6 +11,7 @@ import StepsRestPassProvider from "@/context/step-reset-pass/provider";
 import About from "@/app/pages/about/page";
 import Login from "@/app/pages/auth/login/page";
 import Register from "@/app/pages/auth/signup/page";
+import MealDetails from "@/app/pages/healthy/components/meal-details";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
@@ -27,6 +27,7 @@ export default function AppRouter() {
         { path: "/about", element: <About /> },
         { path: "/classes", element: <Classes /> },
         { path: "/healthy", element: <Healthy /> },
+        { path: "/healthy/:id?", element: <MealDetails /> },
       ],
     },
     {

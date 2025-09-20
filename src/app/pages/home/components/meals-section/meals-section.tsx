@@ -56,7 +56,7 @@ export default function MealsSection() {
               {t("breackfast")}
             </h3>
             <Link
-              to=""
+              to="/healthy?category=Breakfast"
               className="text-main flex items-center gap-2 text-sm font-medium sm:text-base"
             >
               {t("read-more")}
@@ -72,7 +72,7 @@ export default function MealsSection() {
               {t("lunch")}
             </h3>
             <Link
-              to=""
+              to="/healthy?category=Beef"
               className="text-main flex items-center gap-2 text-sm font-medium sm:text-base"
             >
               {t("read-more")}
@@ -88,7 +88,7 @@ export default function MealsSection() {
               {t("dinner")}
             </h3>
             <Link
-              to=""
+              to="/healthy?category=Pork"
               className="text-main flex items-center gap-2 text-sm font-medium sm:text-base"
             >
               {t("read-more")}

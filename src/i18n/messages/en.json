@@ -146,5 +146,7 @@
     "dont-have-an-account": "Dont have an account yet ?",
     "register": " Register"
   },
-  "register-fail": "Register Fail"
+  "register-fail": "Register Fail",
+  "explore": "Explore",
+  "no-meals": "No meals found"
 }
