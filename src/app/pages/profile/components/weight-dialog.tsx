@@ -10,16 +10,22 @@ import {
 } from "@/components/ui/dialog"
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { useUpdateProfile } from "@/hooks/use-edit-profile"
+import { useProfileSchema, type ChangeProfileFields } from "@/lib/schema/auth.schema"
+import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { useTranslations } from "use-intl"
 
 export default function WeightDialog() {
+    //schema
+    const schema = useProfileSchema()
+
     //Form
-    const form = useForm({
+    const form = useForm<ChangeProfileFields>({
         defaultValues: {
-            weight: ""
-        }
+            weight: 70
+        },
+        resolver: zodResolver(schema)
     })
 
     //Use edit hook
@@ -34,7 +40,7 @@ export default function WeightDialog() {
     const [open, setOpen] = useState(false);
 
     //Submit function
-    const handleSubmit = (values: any) => {
+    const handleSubmit = (values: ChangeProfileFields) => {
         console.log(values)
         setFormError(null);
         edit(values, {
@@ -54,7 +60,7 @@ export default function WeightDialog() {
             <DialogContent className="font-baloo rounded-[50px] sm:max-w-[561px] text-center" showCloseButton={false}>
                 {/*header*/}
                 <DialogHeader className="py-2 px-4">
-                    <DialogTitle className="font-extrabold text-5xl text-center">{t("dialog-title")}</DialogTitle>
+                    <DialogTitle className="font-extrabold text-5xl text-center">{t("weight-title")}</DialogTitle>
                     <DialogDescription className="text-2xl text-black dark:text-white text-center">
                         {t("dialog-description")}
                     </DialogDescription>
@@ -73,6 +79,7 @@ export default function WeightDialog() {
                                             max={200}
                                             step={1}
                                             unit="kg"
+                                            defaultValue={field.value || 70}
                                             onChange={field.onChange}
                                         />
                                     </FormControl>

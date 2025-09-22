@@ -16,6 +16,16 @@ export const login = async (values: LoginFields): Promise<APIResponse<AuthRespon
   return data;
 };
 
+//logout
+export const logout = async () => {
+  const { data } = await axios.get(`${import.meta.env.VITE_API}/auth/logout`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    }
+  });
+  return data;
+}
+
 // Forgot password
 export const forgotPassword = async (
   values: ForgotPasswordFields,

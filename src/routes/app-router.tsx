@@ -1,6 +1,5 @@
 import MainLayout from "@/app/layout";
 import AuthLayout from "@/app/pages/auth/layout";
-
 import Classes from "@/app/pages/classes/page";
 import Healthy from "@/app/pages/healthy/page";
 import Homepage from "@/app/pages/home/page";
@@ -19,16 +18,20 @@ export default function AppRouter() {
     {
       path: "/",
       element: (
-        <ProtectedRoute>
-          <MainLayout />
-        </ProtectedRoute>
+        <MainLayout />
       ),
       children: [
         { index: true, element: <Homepage /> },
         { path: "/about", element: <About /> },
         { path: "/classes", element: <Classes /> },
         { path: "/healthy", element: <Healthy /> },
-        { path: "/profile", element: <Profile /> },
+        {
+          path: "/profile", element: (
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          )
+        },
       ],
     },
     {

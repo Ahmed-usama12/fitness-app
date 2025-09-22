@@ -4,11 +4,12 @@ import { useLoginContext } from "@/context/login-context";
 import { toast } from "sonner";
 import type { AxiosError } from "axios";
 import type { AuthResponse } from "@/lib/types/auth";
+import type { ChangeProfileFields } from "@/lib/schema/auth.schema";
 
 export const useUpdateProfile = () => {
     //context
     const { token, setUser } = useLoginContext();
-    return useMutation<AuthResponse, AxiosError<{ error: string }>>({
+    return useMutation<AuthResponse, AxiosError<{ error: string }>, ChangeProfileFields>({
         mutationFn: async (values) => {
             if (!token) {
                 throw new Error("No token found");

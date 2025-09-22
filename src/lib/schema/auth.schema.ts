@@ -1,6 +1,6 @@
 import { useTranslations } from "use-intl";
 import { z } from "zod";
-import { emailSchema, LoginPasswordSchema, passwordSchema } from "./common.schema";
+import { emailSchema, goalSchema, levelSchema, loginPasswordSchema, passwordSchema, weightSchema } from "./common.schema";
 
 //Login Schema
 function useLoginSchema() {
@@ -9,7 +9,7 @@ function useLoginSchema() {
 
   return z.object({
     email: emailSchema(t),
-    password: passwordSchema(t),
+    password: loginPasswordSchema(t),
   });
 }
 
@@ -18,7 +18,7 @@ function useChangePasswordSchema() {
   //Translation
   const t = useTranslations();
   return z.object({
-    password: LoginPasswordSchema(t),
+    password: loginPasswordSchema(t),
     newPassword: passwordSchema(t)
   })
 }
@@ -70,15 +70,26 @@ function useRegistrationSchema() {
         message: t("gender-message"),
       }),
       height: z.number().min(50, { message: t("height-message") }),
-      weight: z.number().min(20, { message: t("weight-message") }),
+      weight: weightSchema,
       age: z.number().min(12, { message: "Age must be at least 12" }),
-      goal: z.string().min(1, { message: t("goal-message") }),
-      activityLevel: z.string().min(1, { message: t("level-message") }),
+      goal: goalSchema,
+      activityLevel: levelSchema,
     })
     .refine((data) => data.password === data.rePassword, {
       path: ["rePassword"],
       message: t("pass-repass-message"),
     });
+}
+
+//Profile schema 
+function useProfileSchema() {
+  //Translations
+  const t = useTranslations()
+  return z.object({
+    weight: weightSchema(t).optional(),
+    activityLevel: levelSchema(t).optional(),
+    goal: goalSchema(t).optional(),
+  })
 }
 
 type RegistrationFields = z.infer<ReturnType<typeof useRegistrationSchema>>;
@@ -94,9 +105,10 @@ type ForgotPasswordFields = z.infer<ReturnType<typeof useForgotPasswordSchema>>;
 type VerifyCodeFields = z.infer<ReturnType<typeof useVerifyCodeSchema>>;
 type NewPasswordFields = z.infer<ReturnType<typeof useNewPasswordSchema>>;
 type ChangePasswordFields = z.infer<ReturnType<typeof useChangePasswordSchema>>
+type ChangeProfileFields = z.infer<ReturnType<typeof useProfileSchema>>
 
 // Export Schema
-export { useLoginSchema, useForgotPasswordSchema, useVerifyCodeSchema, useNewPasswordSchema, useChangePasswordSchema };
+export { useLoginSchema, useForgotPasswordSchema, useVerifyCodeSchema, useNewPasswordSchema, useChangePasswordSchema, useProfileSchema };
 
 // Export Fields
 export {
@@ -104,5 +116,7 @@ export {
   type ForgotPasswordFields,
   type VerifyCodeFields,
   type NewPasswordFields,
-  type ChangePasswordFields
+  type ChangePasswordFields,
+  type ChangeProfileFields
+
 };

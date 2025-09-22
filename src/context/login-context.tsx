@@ -15,12 +15,10 @@ export default function LoginContextProvider({ children }: { children: React.Rea
     const [token, setToken] = useState<string | null>(null);
     const [user, setUser] = useState<User | null>(null)
 
-
     //effect
     useEffect(() => {
-        setToken(localStorage.getItem("token"));
+        setToken(localStorage.getItem("token"))
         setUser(JSON.parse(localStorage.getItem("user") ?? "null"));
-
     }, [])
 
     return (
@@ -29,6 +27,7 @@ export default function LoginContextProvider({ children }: { children: React.Rea
         </LoginContext.Provider>
     )
 }
+
 //custom hook
 export function useLoginContext() {
     const context = useContext(LoginContext);

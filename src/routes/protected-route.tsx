@@ -1,5 +1,3 @@
-import { userContext } from "@/components/providers/components/user-provider";
-import React, { useContext } from "react";
 import { Navigate } from "react-router-dom";
 
 export default function ProtectedRoute({
@@ -7,8 +5,8 @@ export default function ProtectedRoute({
 }: {
 	children: React.ReactNode;
 }) {
-	const { token } = useContext(userContext);
+	const token = localStorage.getItem('token')
 
 	if (token) return children;
-	else return <Navigate to={"/auth/login"} />;
+	else return <Navigate to={"/auth/login"} replace />;
 }

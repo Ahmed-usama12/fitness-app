@@ -1,5 +1,5 @@
-export interface AuthResponse {
-  message:string;
+declare interface AuthResponse {
+  message: string,
   user: User;
   token: string;
 }
@@ -28,6 +28,6 @@ declare interface NewPasswordResponse {
 }
 
 declare interface ChangePassword {
-  message:string
-  token:string
+  message: string
+  token: string
 }

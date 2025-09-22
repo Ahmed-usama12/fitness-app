@@ -29,8 +29,25 @@ export const passwordSchema = (t: KeyTranslation) =>
       message: t("must-include-a-special-character"),
     });
 
-//Login Password Schema
-export const LoginPasswordSchema = (t: KeyTranslation) =>
+//Login Password schema 
+export const loginPasswordSchema = (t: KeyTranslation) =>
   z
-    .string()
-    .min(1, { message: t("current-password-required") })
+    .string().min(1, { message: t("password-required") })
+
+
+//Weight schema
+export const weightSchema = (t: KeyTranslation) =>
+  z.
+    number().min(20, { message: t("weight-message") })
+
+//Goal schema
+export const goalSchema = (t: KeyTranslation) =>
+  z.
+    string().min(1, { message: t("goal-message") })
+
+//LevelSchema
+export const levelSchema = (t: KeyTranslation) =>
+  z.
+    string().min(1, { message: t("level-message") })
+
+

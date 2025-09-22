@@ -10,17 +10,23 @@ import {
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { useUpdateProfile } from "@/hooks/use-edit-profile"
+import { useProfileSchema, type ChangeProfileFields } from "@/lib/schema/auth.schema"
+import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { useTranslations } from "use-intl"
 
 
 export default function GoalDialog() {
+    //schema 
+    const schema = useProfileSchema()
+
     //Form
-    const form = useForm({
+    const form = useForm<ChangeProfileFields>({
         defaultValues: {
             goal: ""
-        }
+        },
+        resolver: zodResolver(schema)
     })
 
     //Use edit hook
@@ -35,7 +41,7 @@ export default function GoalDialog() {
     const [open, setOpen] = useState(false);
 
     //Submit function
-    const handleSubmit = (values: any) => {
+    const handleSubmit = (values: ChangeProfileFields) => {
         setFormError(null);
         edit(values, {
             onSuccess: () => {
@@ -83,8 +89,8 @@ export default function GoalDialog() {
                                         >
                                             {/*items*/}
                                             {data.map((item, index) => (
-                                                <FormItem key={index} className="flex items-center bg-[#D3D3D333] has-[:checked]:border-main dark:has-[:checked]:border-main  has-[:checked]:text-main justify-between gap-2 w-3/4 border border-black dark:border-white rounded-[14px] py-2 px-4">
-                                                    <FormLabel className="font-bold">
+                                                <FormItem key={index} className="flex items-center  bg-[#D3D3D333] has-[:checked]:border-main dark:has-[:checked]:border-main  has-[:checked]:text-main justify-between gap-2 w-3/4 border border-black dark:border-white rounded-[14px] py-2 px-4">
+                                                    <FormLabel className="font-bold cursor-pointer">
                                                         {item}
                                                     </FormLabel>
                                                     <FormControl>
