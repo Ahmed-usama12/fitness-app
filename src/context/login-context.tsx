@@ -19,7 +19,7 @@ export default function LoginContextProvider({ children }: { children: React.Rea
     useEffect(() => {
         setToken(localStorage.getItem("token"))
         setUser(JSON.parse(localStorage.getItem("user") ?? "null"));
-    },[])
+    }, [])
 
     return (
         <LoginContext.Provider value={{ token, setToken, user, setUser }}>

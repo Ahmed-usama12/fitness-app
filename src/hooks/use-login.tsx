@@ -5,6 +5,7 @@ import { login } from "@/lib/api/auth.api";
 import type { LoginFields } from "@/lib/schema/auth.schema";
 import { useLoginContext } from "@/context/login-context";
 import type { AxiosError } from "axios";
+import type { AuthResponse } from "@/lib/types/auth";
 
 export function useLogin() {
     const navigate = useNavigate();
