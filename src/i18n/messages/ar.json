@@ -172,6 +172,11 @@
     "enter-strong-password": "ادخل كلمة مرور قوية",
     "loading": "تحميل",
     "select-weight": "اختر وزنك",
-    "weight-title":"ماهو وزنك"
-  }
+    "weight-title": "ماهو وزنك",
+    "help": "مساعدة",
+    "privacy-policy": "سياسة الخصوصية",
+    "security": "حماية",
+    "logout": "تسجيل الخروج"
+  },
+  "select-lang": "أختر اللغة"
 }

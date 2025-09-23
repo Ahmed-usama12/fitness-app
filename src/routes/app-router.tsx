@@ -12,25 +12,26 @@ import About from "@/app/pages/about/page";
 import Login from "@/app/pages/auth/login/page";
 import Register from "@/app/pages/auth/signup/page";
 import Profile from "@/app/pages/profile/page";
+import PrivacyPolicy from "@/app/pages/privacy-policy/page";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
     {
       path: "/",
-      element: (
-        <MainLayout />
-      ),
+      element: <MainLayout />,
       children: [
         { index: true, element: <Homepage /> },
         { path: "/about", element: <About /> },
         { path: "/classes", element: <Classes /> },
         { path: "/healthy", element: <Healthy /> },
+        { path: "/privacy", element: <PrivacyPolicy /> },
         {
-          path: "/profile", element: (
+          path: "/profile",
+          element: (
             <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
-          )
+          ),
         },
       ],
     },
