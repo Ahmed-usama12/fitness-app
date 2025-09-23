@@ -175,5 +175,10 @@
     "loading": "Loading...",
     "select-weight": "Select Your Weight",
     "weight-title":"what is your Weight ?"
-  }
+  },
+ 
+  "explore": "Explore",
+  "no-meals": "No meals found"
 }
+ 
+
