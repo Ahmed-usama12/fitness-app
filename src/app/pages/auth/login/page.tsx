@@ -109,15 +109,15 @@ export default function Login() {
                             {/* icons */}
                             <div className="flex justify-center gap-3 items-center">
                                 {/* Facebook Icon */}
-                                <div className="bg-[#242424] p-2 rounded-full w-fit">
+                                <div className="bg-[#242424] p-2 rounded-full">
                                     <Facebook className="text-white " />
                                 </div>
                                 {/* Google Icon */}
-                                <div className="bg-[#242424] p-2 rounded-full w-fit">
+                                <div className="bg-[#242424] p-2 rounded-full">
                                     <Apple className="text-white " />
                                 </div>
                                 {/* Apple Icon */}
-                                <div className="bg-[#242424] p-2 rounded-full w-fit">
+                                <div className="bg-[#242424] p-2 rounded-full">
                                     <Instagram className="text-white " />
                                 </div>
                             </div>

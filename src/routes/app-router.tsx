@@ -11,22 +11,27 @@ import StepsRestPassProvider from "@/context/step-reset-pass/provider";
 import About from "@/app/pages/about/page";
 import Login from "@/app/pages/auth/login/page";
 import Register from "@/app/pages/auth/signup/page";
+import Profile from "@/app/pages/profile/page";
 import MealDetails from "@/app/pages/healthy/components/meal-details";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
     {
       path: "/",
-      element: (
-        <ProtectedRoute>
-          <MainLayout />
-        </ProtectedRoute>
-      ),
+      element: <MainLayout />,
       children: [
         { index: true, element: <Homepage /> },
         { path: "/about", element: <About /> },
         { path: "/classes", element: <Classes /> },
         { path: "/healthy", element: <Healthy /> },
+        {
+          path: "/profile",
+          element: (
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          ),
+        },
         { path: "/healthy/:id?", element: <MealDetails /> },
       ],
     },
