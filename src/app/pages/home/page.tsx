@@ -8,8 +8,13 @@ import WhyUsSection from "./components/whyus-section/why-us-section";
 export default function Homepage() {
   return (
     <main>
+      {/* hero section */}
       <HeroSection />
+
+      {/* about section */}
       <About />
+
+      {/* workout section */}
       <WorkoutSection />
 
       {/* whyus section */}

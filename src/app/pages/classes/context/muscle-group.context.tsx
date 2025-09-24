@@ -22,10 +22,12 @@ export const musclesGroupContext = createContext<TMusclesGroupContext>({
 });
 
 export default function MuscleGroupProvider({ children }: { children: React.ReactNode }) {
+  // locale
   const locale = useLocale();
+
   const [muscleGroupId, setMuscleGroupId] = useState<string>("67c79f3526895f87ce0aa96f");
 
-  // fetch muscle group bt id
+  // fetch muscle group by id
   const {
     data: muscleGroup,
     isFetching,
@@ -36,6 +38,7 @@ export default function MuscleGroupProvider({ children }: { children: React.Reac
   });
 
   return (
+    // Muscle group provider
     <musclesGroupContext.Provider
       value={{ muscleGroup, muscleGroupId, setMuscleGroupId, isFetching, error }}
     >

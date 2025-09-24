@@ -26,6 +26,7 @@ export default function Navbar() {
             className="w-full"
           >
             <CarouselContent>
+              {/* Muscles */}
               {groups.map((item) => (
                 <CarouselItem key={item._id} className="basis-1/3 md:basis-1/6">
                   <Button
