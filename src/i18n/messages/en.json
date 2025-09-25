@@ -109,6 +109,10 @@
   "read-more": "Read More",
   "lunch": "LUNCH",
   "dinner": "DINNER",
+  "explore": "Explore",
+  "explore-more": "ُExplore More",
+  "get-started": "Get Started",
+  "no-items": "There are no items to display",
   "hero-section": {
     "title": "YOUR BODY CAN <span>STAND ALMOST</span> ANYTHING",
     "message": "It's your mind that needs convincing. Push past your limits, stay committed, and watch as your body transform into powerhouse of strength and resilience. Start your journey today & truly capable of",
@@ -174,11 +178,12 @@
     "enter-strong-password": "Enter strong password",
     "loading": "Loading...",
     "select-weight": "Select Your Weight",
-    "weight-title":"what is your Weight ?"
+    "weight-title": "what is your Weight ?"
   },
- 
-  "explore": "Explore",
-  "no-meals": "No meals found"
-}
- 
 
+  "no-meals": "No meals found",
+  "workouts-section": {
+    "fitness-class": "Fitness Class",
+    "nav-paragraph": "Transform Your Body with Our Dynamic <span>Upcoming Workouts</span>"
+  }
+}

@@ -27,7 +27,7 @@ export default function AboutHeader() {
           stroke="url(#gradient)"
           strokeWidth="1"
         >
-          {t("workouts")}
+          ABOUT US
         </text>
       </svg>
       <span className="text-main font-baloo absolute top-0 flex items-end gap-3 text-lg font-semibold md:bottom-1 ltr:left-1 rtl:right-1 rtl:text-3xl">
