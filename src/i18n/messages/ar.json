@@ -184,6 +184,13 @@
 
   "workouts-section": {
     "fitness-class": "أقسام اللياقة البدنية",
-    "nav-paragraph": "غير جسمك مع تمارينا المناسبة <span>لكل عضلات الجسم</span> "
-  }
+    "nav-paragraph": "غير جسمك مع تمارينا المناسبة <span>لكل عضلات الجسم</span> ",
+    "weight-title": "ماهو وزنك",
+    "help": "مساعدة",
+    "privacy-policy": "سياسة الخصوصية",
+    "security": "حماية",
+    "logout": "تسجيل الخروج"
+  },
+  "select-lang": "أختر اللغة"
 }
+

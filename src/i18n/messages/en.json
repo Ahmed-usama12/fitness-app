@@ -184,6 +184,15 @@
   "no-meals": "No meals found",
   "workouts-section": {
     "fitness-class": "Fitness Class",
-    "nav-paragraph": "Transform Your Body with Our Dynamic <span>Upcoming Workouts</span>"
-  }
+    "nav-paragraph": "Transform Your Body with Our Dynamic <span>Upcoming Workouts</span>",
+    "weight-title": "what is your Weight ?",
+    "help": "Help",
+    "privacy-policy": "Privacy Policy",
+    "security": "Security",
+    "logout": "Logout"
+ 
+  },
+  "select-lang": "Select Language"
 }
+
+

@@ -13,6 +13,7 @@ import Profile from "@/app/pages/profile/page";
 import MealDetails from "@/app/pages/healthy/components/meal-details";
 import WorkoutsLayout from "@/app/pages/classes/layout";
 import AboutLayout from "@/app/pages/about/layout";
+import PrivacyPolicy from "@/app/pages/privacy-policy/page";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
@@ -24,6 +25,7 @@ export default function AppRouter() {
         { path: "/about", element: <AboutLayout /> },
         { path: "/classes", element: <WorkoutsLayout /> },
         { path: "/healthy", element: <Healthy /> },
+        { path: "/privacy", element: <PrivacyPolicy /> },
         {
           path: "/profile",
           element: (

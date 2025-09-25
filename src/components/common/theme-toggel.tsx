@@ -7,12 +7,14 @@ export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
 
   return (
-    <Switch
-      checked={theme === "dark" ? true : false}
-      onCheckedChange={() => {
-        if (theme === "dark") setTheme("light");
-        if (theme === "light") setTheme("dark");
-      }}
-    />
+    <div dir="ltr">
+      <Switch
+        checked={theme === "dark"}
+        onCheckedChange={() => {
+          if (theme === "dark") setTheme("light");
+          if (theme === "light") setTheme("dark");
+        }}
+      />
+    </div>
   );
 }
