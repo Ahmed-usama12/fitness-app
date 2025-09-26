@@ -1,6 +1,6 @@
 import WorkoutHeader from "./components/header";
-import MuscleGroups from "./components/muscle-group";
 import Navbar from "./components/navbar";
+import MuscleGroups from "./components/muscle-group";
 
 export default function Workouts() {
   return (

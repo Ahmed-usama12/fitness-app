@@ -5,43 +5,44 @@ import { useLocale } from "use-intl";
 
 // context type
 type TMusclesGroupContext = {
-    muscleGroup: MusclesByGroup | undefined;
-    muscleGroupId: string;
-    setMuscleGroupId: Dispatch<SetStateAction<string>>;
-    isFetching: boolean;
-    error: Error | null;
+  muscleGroup: MusclesByGroup | undefined;
+  muscleGroupId: string;
+  setMuscleGroupId: Dispatch<SetStateAction<string>>;
+  isFetching: boolean;
+  error: Error | null;
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const musclesGroupContext = createContext<TMusclesGroupContext>({
-    muscleGroup: undefined,
-    muscleGroupId: "",
-    setMuscleGroupId: () => { },
-    isFetching: false,
-    error: null,
+  muscleGroup: undefined,
+  muscleGroupId: "",
+  setMuscleGroupId: () => {},
+  isFetching: false,
+  error: null,
 });
 
 export default function MuscleGroupProvider({ children }: { children: React.ReactNode }) {
-    // locale
-    const locale = useLocale();
+  // locale
+  const locale = useLocale();
 
-    const [muscleGroupId, setMuscleGroupId] = useState<string>("67c79f3526895f87ce0aa96f");
+  const [muscleGroupId, setMuscleGroupId] = useState<string>("67c79f3526895f87ce0aa96f");
 
-    // fetch muscle group by id
-    const {
-        data: muscleGroup,
-        isFetching,
-        error,
-    } = useQuery<MusclesByGroup>({
-        queryKey: [`muscleGroup/${muscleGroupId}`],
-        queryFn: async () => await getMuscleGroup(muscleGroupId, locale),
-    });
+  // fetch muscle group by id
+  const {
+    data: muscleGroup,
+    isFetching,
+    error,
+  } = useQuery<MusclesByGroup>({
+    queryKey: [`muscleGroup/${muscleGroupId}`],
+    queryFn: async () => await getMuscleGroup(muscleGroupId, locale),
+  });
 
-    return (
-        // Muscle group provider
-        <musclesGroupContext.Provider value={{ muscleGroup, muscleGroupId, setMuscleGroupId, isFetching, error }}
-        >
-            {children}
-        </musclesGroupContext.Provider>
-    );
+  return (
+    // Muscle group provider
+    <musclesGroupContext.Provider
+      value={{ muscleGroup, muscleGroupId, setMuscleGroupId, isFetching, error }}
+    >
+      {children}
+    </musclesGroupContext.Provider>
+  );
 }

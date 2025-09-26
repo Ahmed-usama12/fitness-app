@@ -1,8 +1,8 @@
 import { getMusclesGroup } from "@/lib/api/workouts.api";
 import { useQuery } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "use-intl";
-import { useContext } from "react";
 import { musclesGroupContext } from "../context/muscle-group.context";
+import { useContext } from "react";
 
 export default function useNavbar() {
   // muscle group context

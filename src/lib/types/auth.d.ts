@@ -3,6 +3,7 @@ declare interface AuthResponse {
   user: User;
   token: string;
 }
+
 //Signup
 export type Register = {
   firstName: string;
@@ -24,4 +25,9 @@ declare interface ForgotPasswordResponse {
 
 declare interface NewPasswordResponse {
   token: string;
+}
+
+declare interface ChangePassword {
+  message: string
+  token: string
 }

@@ -13,16 +13,15 @@ import AboutLayout from "@/app/pages/about/layout";
 import WorkoutsLayout from "@/app/pages/classes/layout";
 import Exercise from "@/app/pages/classes/components/exercise";
 import { SelectedExerciseProvider } from "@/app/pages/classes/context/selected-exercise.context";
+import Profile from "@/app/pages/profile/page";
+import MealDetails from "@/app/pages/healthy/components/meal-details";
+import PrivacyPolicy from "@/app/pages/privacy-policy/page";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
     {
       path: "/",
-      element: (
-        <ProtectedRoute>
-          <MainLayout />
-        </ProtectedRoute>
-      ),
+      element: <MainLayout />,
       children: [
         { index: true, element: <Homepage /> },
         { path: "/about", element: <AboutLayout /> },
@@ -34,6 +33,16 @@ export default function AppRouter() {
             </SelectedExerciseProvider>
         },
         { path: "/healthy", element: <Healthy /> },
+        { path: "/privacy", element: <PrivacyPolicy /> },
+        {
+          path: "/profile",
+          element: (
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          ),
+        },
+        { path: "/healthy/:id?", element: <MealDetails /> },
       ],
     },
     {
