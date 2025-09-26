@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -113,6 +114,7 @@ function DialogTitle({
       className={cn("text-lg leading-none font-semibold", className)}
       {...props}
     />
+
   )
 }
 
