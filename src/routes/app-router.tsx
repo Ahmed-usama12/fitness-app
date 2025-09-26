@@ -9,10 +9,12 @@ import ResetPassword from "@/app/pages/auth/forgot-password/page";
 import StepsRestPassProvider from "@/context/step-reset-pass/provider";
 import Login from "@/app/pages/auth/login/page";
 import Register from "@/app/pages/auth/signup/page";
+import AboutLayout from "@/app/pages/about/layout";
+import WorkoutsLayout from "@/app/pages/classes/layout";
+import Exercise from "@/app/pages/classes/components/exercise";
+import { SelectedExerciseProvider } from "@/app/pages/classes/context/selected-exercise.context";
 import Profile from "@/app/pages/profile/page";
 import MealDetails from "@/app/pages/healthy/components/meal-details";
-import WorkoutsLayout from "@/app/pages/classes/layout";
-import AboutLayout from "@/app/pages/about/layout";
 import PrivacyPolicy from "@/app/pages/privacy-policy/page";
 
 export default function AppRouter() {
@@ -24,6 +26,12 @@ export default function AppRouter() {
         { index: true, element: <Homepage /> },
         { path: "/about", element: <AboutLayout /> },
         { path: "/classes", element: <WorkoutsLayout /> },
+        {
+          path: "classes/:id", element:
+            <SelectedExerciseProvider>
+              <Exercise />
+            </SelectedExerciseProvider>
+        },
         { path: "/healthy", element: <Healthy /> },
         { path: "/privacy", element: <PrivacyPolicy /> },
         {

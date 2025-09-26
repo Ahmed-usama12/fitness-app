@@ -12,6 +12,7 @@ import { useLocale, useTranslations } from "use-intl";
 
 import CardLoading from "@/components/common/card-loading";
 import { isMobileContext } from "@/components/providers/components/mobile.provider";
+
 import GenerateBullets from "@/components/common/generate-bullets";
 import GeneralError from "@/components/common/general-error";
 

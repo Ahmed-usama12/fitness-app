@@ -72,6 +72,8 @@
   "goal-message": "Goal is required",
   "level-message": "Please select your activity level",
   "pass-repass-message": "Passwords do not match",
+  "recomended":"Recommendation For You ",
+  "expertly-designed":"Expertly designed workout.",
   "code-length": "The biggest thing is four digits.",
   "8-characters-required": "8+ characters required",
   "passwords-do-not-match": "Passwords do not match",
