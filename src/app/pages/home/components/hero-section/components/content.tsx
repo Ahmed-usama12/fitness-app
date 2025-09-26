@@ -12,7 +12,7 @@ export default function HeroContent() {
 
   // translation
   const t = useTranslations("hero-section");
-
+  const g = useTranslations();
   // format numbers
   const format = useFormatter();
 
@@ -54,10 +54,10 @@ export default function HeroContent() {
 
         <div className="mt-16 flex justify-between gap-12 md:justify-start">
           <Button icon={!isMobile} className="w-40" onClick={() => nav("/classes")}>
-            Get Started
+            {g("get-started")}
           </Button>
           <Button icon={!isMobile} variant="secondary">
-            Explore More
+            {g("explore-more")}
           </Button>
         </div>
       </div>

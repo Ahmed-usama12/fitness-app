@@ -1,7 +1,9 @@
 import { DialogDemo } from "@/components/chat/dialog-chat";
 import { Header } from "@/components/layout/header";
 import ChatBotProvider from "@/context/chat-context/provider";
+import Footer from "@/components/layout/footer";
 import { Outlet } from "react-router-dom";
+import ScrollTicker from "@/components/common/scroll-ticker";
 
 export default function MainLayout() {
   return (
@@ -18,7 +20,9 @@ export default function MainLayout() {
       <Outlet />
 
       {/* Footer */}
-      <h1>footer</h1>
+      <Footer />
+       <ScrollTicker />
     </div>
   );
 }
+

@@ -45,7 +45,7 @@ export default function About() {
             <React.Fragment key={index}>
               <div className="col-span-2 md:col-span-1">
                 <h3 className="font-baloo mb-4 flex items-center gap-4 text-[20px] font-bold">
-                  <img src={vector} className="size-4" />
+                  <img src={vector} alt="vector" className="size-4" />
                   {el.title}
                 </h3>
                 <p>{el.parg}</p>
