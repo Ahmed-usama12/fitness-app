@@ -72,6 +72,8 @@
   "goal-message": "Goal is required",
   "level-message": "Please select your activity level",
   "pass-repass-message": "Passwords do not match",
+  "recomended":"Recommendation For You ",
+  "expertly-designed":"Expertly designed workout.",
   "code-length": "The biggest thing is four digits.",
   "8-characters-required": "8+ characters required",
   "passwords-do-not-match": "Passwords do not match",
@@ -108,6 +110,10 @@
   "read-more": "Read More",
   "lunch": "LUNCH",
   "dinner": "DINNER",
+  "explore": "Explore",
+  "explore-more": "ُExplore More",
+  "get-started": "Get Started",
+  "no-items": "There are no items to display",
   "hero-section": {
     "title": "YOUR BODY CAN <span>STAND ALMOST</span> ANYTHING",
     "message": "It's your mind that needs convincing. Push past your limits, stay committed, and watch as your body transform into powerhouse of strength and resilience. Start your journey today & truly capable of",
@@ -146,5 +152,10 @@
     "dont-have-an-account": "Dont have an account yet ?",
     "register": " Register"
   },
-  "register-fail": "Register Fail"
+  "register-fail": "Register Fail",
+  "no-meals": "No meals found",
+  "workouts-section": {
+    "fitness-class": "Fitness Class",
+    "nav-paragraph": "Transform Your Body with Our Dynamic <span>Upcoming Workouts</span>"
+  }
 }
