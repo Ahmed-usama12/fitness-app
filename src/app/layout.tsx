@@ -19,9 +19,11 @@ export default function MainLayout() {
       {/* Content */}
       <Outlet />
 
+      {/*scroll*/}
+      <ScrollTicker />
+
       {/* Footer */}
       <Footer />
-       <ScrollTicker />
     </div>
   );
 }

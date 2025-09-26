@@ -9,7 +9,7 @@ export default function Footer() {
     const t = useTranslations('footer');
 
     return (
-        <footer dir={locale === "ar" ? "rtl" : "ltr"} className='grid grid-cols-1 gap-y-5 md:grid-cols-2 lg:grid-cols-4 justify-items-center  pt-10 pb-20 px-20 bg-[#F3F3F4] text-[#242424] dark:bg-[#242424] dark:text-[#f3f3f4] '>
+        <footer dir={locale === "ar" ? "rtl" : "ltr"} className='grid grid-cols-1 gap-y-5 md:grid-cols-2 lg:grid-cols-4  pt-10 pb-20 px-40 bg-[#F3F3F4] text-[#242424] dark:bg-[#242424] dark:text-[#f3f3f4] '>
             {/*Logo & Slogan*/}
             <div>
                 <img
