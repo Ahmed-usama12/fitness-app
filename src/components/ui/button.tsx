@@ -62,7 +62,7 @@ function Button({
 			/>
 			{icon && (
 				<div className="bg-main size-9 absolute top-1/2 -right-5 -translate-y-1/2 border-[2px] border-zinc-50 rounded-full flex items-center justify-center">
-					<img src={vector} className="w-4" />
+					<img src={vector} className="w-4" alt="icon" />
 				</div>
 			)}
 		</div>
