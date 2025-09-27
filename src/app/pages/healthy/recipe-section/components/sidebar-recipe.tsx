@@ -1,10 +1,15 @@
 import test from "@assets/images/about-man1.png";
 import SidbarHeader from "./sidbar-header";
-export default function SidebarRecipe() {
+
+type SidebarRecipeProps ={
+currentCategories:string
+}
+export default function SidebarRecipe({currentCategories}:SidebarRecipeProps) {
+
   return (
     <div className="col-span-2 w-[409px] space-y-4 rounded-xl border-2 p-4">
       {/* Links */}
-      <SidbarHeader />
+      <SidbarHeader currentCategories={currentCategories} />
 
       {/* Meals */}
       <div className="space-y-8">

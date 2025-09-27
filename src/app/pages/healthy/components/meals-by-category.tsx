@@ -16,12 +16,15 @@ type MealsNavbarProps = {
   selectedCategory: string | null;
 };
 export default function MealsGrid({ selectedCategory }: MealsNavbarProps) {
-  const { meals, isLoading } = useMeals(selectedCategory);
+  const { payload, isLoading } = useMeals(selectedCategory||"");
   // Hooks
 
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
+
+  console.log(payload);
+  
 
   React.useEffect(() => {
     if (!api) return;
@@ -36,8 +39,10 @@ export default function MealsGrid({ selectedCategory }: MealsNavbarProps) {
 
   // Display Six Meals in Every Page
   const pages: Meal[][] = [];
-  for (let i = 0; i < meals.length; i += 6) {
-    pages.push(meals.slice(i, i + 6));
+  if (payload?.meals) {
+    for (let i = 0; i < payload.meals.length; i += 6) {
+      pages.push(payload.meals.slice(i, i + 6));
+    }
   }
   // Translition
   const t = useTranslations();
@@ -52,7 +57,7 @@ export default function MealsGrid({ selectedCategory }: MealsNavbarProps) {
 
   return (
     <>
-      {meals.length > 0 ? (
+      {(payload?.meals ?? []).length > 0 ? (
         <Carousel
           opts={{ align: "start", slidesToScroll: 1 }}
           setApi={setApi}

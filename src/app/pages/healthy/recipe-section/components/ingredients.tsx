@@ -8,7 +8,7 @@ export default function Ingredients({ measures, ingreduents }: IngredientsProps)
     ingreduents.map((ing, index) => [ing, measures[index] || ""]),
   );
 
-  console.log(combined);
+  
 
   return (
     <section className="mt-12">

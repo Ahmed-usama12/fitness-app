@@ -1,20 +1,14 @@
-import { useMealsDetails } from "@/hooks/use-meals";
 import Ingredients from "./ingredients";
-import { useParams } from "react-router-dom";
 
-export default function ViewDetails() {
-  const { id } = useParams<{ id: string }>();
+
+export default function ViewDetails({meals}:{meals:MealDetails[]}) {
+ 
   
-  if (!id) {
-    return <div>No recipe ID provided</div>;
-  }
-
-  const { payload } = useMealsDetails(id);
-
+  
   function filtterResponse(key: string) {
     let myArray;
-    if (payload) {
-      myArray = Object.entries(payload?.meals[0])
+    if (meals) {
+      myArray = Object.entries(meals[0])
         .filter(([k, v]) => k.includes(key) && v !== "")
         .map(([, v]) => v);
     }
@@ -25,7 +19,7 @@ export default function ViewDetails() {
     <section className="relative w-full overflow-hidden rounded-2xl">
       <div className="relative h-[520px] w-full">
         <img
-          src={payload?.meals[0].strMealThumb}
+          src={meals[0].strMealThumb}
           alt="Recipe Hero"
           className="h-full w-full object-cover"
         />
@@ -33,19 +27,19 @@ export default function ViewDetails() {
 
         <div className="absolute inset-x-0 bottom-0 p-10 text-center">
           <h1 className="mb-4 text-5xl font-semibold text-white md:text-6xl">
-            {payload?.meals[0].strMeal}
+            {meals[0].strMeal}
           </h1>
           <p
             className="line-clamp-2 max-w-4xl text-base leading-7 text-gray-300"
-            title={payload?.meals[0].strInstructions}
+            title={meals[0].strInstructions}
           >
-            {payload?.meals[0].strInstructions}
+            {meals[0].strInstructions}
           </p>
           <div className="mt-10 flex flex-wrap justify-around gap-6">
-            <MacroBadge label="Energy" value={payload?.meals[0].strMeasure3 || ""} />
-            <MacroBadge label="Protein" value={payload?.meals[0].strMeasure1 || ""} />
-            <MacroBadge label="Carbs" value={payload?.meals[0].strMeasure5 || ""} />
-            <MacroBadge label="Fat" value={payload?.meals[0].strMeasure2 || ""} />
+            <MacroBadge label="Energy" value={meals[0].strMeasure3 || ""} />
+            <MacroBadge label="Protein" value={meals[0].strMeasure1 || ""} />
+            <MacroBadge label="Carbs" value={meals[0].strMeasure5 || ""} />
+            <MacroBadge label="Fat" value={meals[0].strMeasure2 || ""} />
           </div>
         </div>
       </div>

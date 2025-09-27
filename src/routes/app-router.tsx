@@ -14,7 +14,6 @@ import WorkoutsLayout from "@/app/pages/classes/layout";
 import Exercise from "@/app/pages/classes/components/exercise";
 import { SelectedExerciseProvider } from "@/app/pages/classes/context/selected-exercise.context";
 import Profile from "@/app/pages/profile/page";
-import MealDetails from "@/app/pages/healthy/components/meal-details";
 import PrivacyPolicy from "@/app/pages/privacy-policy/page";
 import RecipeSection from "@/app/pages/healthy/recipe-section/page";
 
@@ -46,7 +45,6 @@ export default function AppRouter() {
             </ProtectedRoute>
           ),
         },
-        { path: "/healthy/:id?", element: <MealDetails /> },
       ],
     },
     {

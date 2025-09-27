@@ -1,3 +1,14 @@
+
+declare type Meal = {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+};
+
+declare type MealsResponse = {
+  meals: Meal[];
+};
+
 declare interface MealCategory {
   idCategory: string;
   strCategory: string;
@@ -9,7 +20,7 @@ declare interface MealsCategoriesResponse {
   categories: MealCategory[];
 }
 
-declare interface Meal {
+declare interface MealDetails {
   idMeal: string;
   strMeal: string;
   strMealAlternate: string | null;
@@ -66,5 +77,6 @@ declare interface Meal {
 }
 
 declare interface MealsByIdOrSearchResponse {
-  meals: Meal[];
+  meals: MealDetails[];
 }
+
