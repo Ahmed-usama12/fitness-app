@@ -14,14 +14,14 @@ export const useGetMealsCategories = () => {
   return { payload, isLoading, isError };
 };
 
-export const useMealsDetails = (Id: string) => {
+export const useMealsDetails = (id: string) => {
   const {
     data: payload,
     isLoading,
     isError,
   } = useQuery({
     queryKey: ["meals-details"],
-    queryFn: () => getMealsDetails(Id),
+    queryFn: () => getMealsDetails(id),
   });
 
   return { payload, isLoading, isError };

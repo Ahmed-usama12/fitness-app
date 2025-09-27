@@ -1,8 +1,15 @@
 import { useMealsDetails } from "@/hooks/use-meals";
 import Ingredients from "./ingredients";
+import { useParams } from "react-router-dom";
 
 export default function ViewDetails() {
-  const { payload } = useMealsDetails("52878");
+  const { id } = useParams<{ id: string }>();
+  
+  if (!id) {
+    return <div>No recipe ID provided</div>;
+  }
+
+  const { payload } = useMealsDetails(id);
 
   function filtterResponse(key: string) {
     let myArray;

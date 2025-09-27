@@ -36,10 +36,10 @@ export const getSpecificMeals = async (category: string) => {
 };
 
 // Get Meals Categories
-export const getMealsDetails = async (Id: string) => {
+export const getMealsDetails = async (id: string) => {
   try {
     const { data }: { data: APIResponse<MealsByIdOrSearchResponse> } = await axios.get(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${Id}`,
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
     );
 
     if ("error" in data) throw new Error(data.error);

@@ -16,6 +16,7 @@ import { SelectedExerciseProvider } from "@/app/pages/classes/context/selected-e
 import Profile from "@/app/pages/profile/page";
 import MealDetails from "@/app/pages/healthy/components/meal-details";
 import PrivacyPolicy from "@/app/pages/privacy-policy/page";
+import RecipeSection from "@/app/pages/healthy/recipe-section/page";
 
 export default function AppRouter() {
   const routes = createBrowserRouter([
@@ -27,12 +28,15 @@ export default function AppRouter() {
         { path: "/about", element: <AboutLayout /> },
         { path: "/classes", element: <WorkoutsLayout /> },
         {
-          path: "classes/:id", element:
+          path: "classes/:id",
+          element: (
             <SelectedExerciseProvider>
               <Exercise />
             </SelectedExerciseProvider>
+          ),
         },
         { path: "/healthy", element: <Healthy /> },
+        { path: "/healthy/:id", element: <RecipeSection /> },
         { path: "/privacy", element: <PrivacyPolicy /> },
         {
           path: "/profile",
