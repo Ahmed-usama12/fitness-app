@@ -5,7 +5,7 @@ import { useLocale } from "use-intl";
 export default function useMealsCategories() {
   const locale = useLocale();
 
-  const { data, isLoading, error } = useQuery<MealsCategoriesResponse>({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["mealsCategories", locale],
     queryFn: () => GetMealsCategories(locale),
   });
