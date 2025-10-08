@@ -89,7 +89,7 @@ export function Header() {
               <Button variant={"secondary"}>{t("signup")}</Button>
             </div>
           ) : (
-            <UserDropdownMenu userEmail="john.doe@example.com" userName="John Doe" />
+            <UserDropdownMenu />
           )}
 
           {/* Mobile Menu Button */}

@@ -7,31 +7,31 @@ import { useSelectedExercise } from "../context/selected-exercise.context";
 import { useEffect } from "react";
 
 type props = {
-    id: string | undefined
-    level: string | null
-}
+  id: string | undefined;
+  level: string | null;
+};
 export default function ExerciseList({ id, level }: props) {
-    //Locale
-    const locale = useLocale()
+  //Locale
+  const locale = useLocale();
 
-    //Use hooks
-    const { data: list, isLoading } = useExercises(locale, id, level);
-    const { setSelectedExercise } = useSelectedExercise()
-    useEffect(() => {
-        if (list?.exercises?.length) {
-            setSelectedExercise(list.exercises[0]);
-        }
-    }, [list]);
+  //Use hooks
+  const { data: list, isLoading } = useExercises(locale, id, level);
+  const { setSelectedExercise } = useSelectedExercise();
+  useEffect(() => {
+    if (list && "error" in list) throw new Error("Can't get list");
+    if (list?.exercises?.length) {
+      setSelectedExercise(list.exercises[0]);
+    }
+  }, [list]);
 
-    //Skeleton
-    if (isLoading) return <ExerciseItemSkeleton />;
+  //Skeleton
+  if (isLoading) return <ExerciseItemSkeleton />;
 
-    return (
-        <div className="p-4">
-            {list?.exercises.map((item: Exercise) => <ExerciseItem key={item._id} item={item} />
-            )}
-        </div>
-    )
-
-
+  return (
+    <div className="p-4">
+      {list && "error" in list
+        ? "can't get list"
+        : list?.exercises.map((item: Exercise) => <ExerciseItem key={item._id} item={item} />)}
+    </div>
+  );
 }
