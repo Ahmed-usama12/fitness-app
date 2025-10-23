@@ -1,69 +1,45 @@
-# React + TypeScript + Vite
+# 🏋️‍♂️ Fitness App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, AI-powered **Fitness Web Application** designed to help users achieve their fitness goals through personalized workout plans, meal suggestions, and intelligent guidance.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Overview
 
-## Expanding the ESLint configuration
+The **Fitness App** was developed collaboratively with a team using **Agile methodology**, ensuring continuous improvement, regular feedback, and efficient sprint-based progress.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This web app allows users to:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Interact with an **AI Chat Bot** for fitness guidance.
+- Access **structured workout sections** tailored for all levels.
+- Explore **meal plans** for three fitness levels (Beginner, Intermediate, Advanced).
+- Browse workouts based on **muscle groups**.
+- Watch **instructional workout videos** for correct form and technique.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧠 Key Features
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- 🤖 **AI Fitness Chatbot** — Provides personalized workout and nutrition advice.
+- 🏃‍♀️ **Workout Sections** — Categorized routines for different goals and skill levels.
+- 🥗 **Meal Plans** — Customizable meal suggestions across three difficulty levels.
+- 💪 **Muscle-Based Browsing** — Easily find workouts for specific muscle groups.
+- 🎥 **Instructional Videos** — Integrated media for learning proper exercise techniques.
+- 🌐 **Multi-language Support** — Powered by `use-intl`.
+- ⚡ **Fast and Responsive UI** — Built with modern frontend tools and libraries.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Tech Stack
+
+| Category       | Tools & Libraries                                                              |
+| -------------- | ------------------------------------------------------------------------------ |
+| Framework      | [React](https://react.dev/) + [Vite](https://vitejs.dev/)                      |
+| Language       | [TypeScript](https://www.typescriptlang.org/)                                  |
+| State/Data     | [React Query](https://tanstack.com/query/latest)                               |
+| Styling        | [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/) |
+| Forms          | [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)      |
+| Localization   | [use-intl](https://github.com/amannn/next-intl)                                |
+| AI Integration | Custom AI Chatbot                                                              |
+
+---
