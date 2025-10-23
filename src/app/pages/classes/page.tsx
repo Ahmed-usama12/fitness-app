@@ -13,8 +13,9 @@ export default function Workouts() {
 
       {/* page components */}
       <div className="absolute z-10 mt-6 w-full space-y-5 px-5 md:px-20">
+        {/*navbar */}
         <Navbar />
-
+        {/* muscles group section */}
         <MuscleGroups />
       </div>
     </main>

@@ -68,7 +68,7 @@ export default function MuscleGroups() {
             }}
             setApi={setApi}
           >
-            <CarouselContent>
+            <CarouselContent className="mt-10 flex items-center justify-center">
               {/* make the carousel content in mobil to render just on card */}
               {isMobile
                 ? group.map((item) => (

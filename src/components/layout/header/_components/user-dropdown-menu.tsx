@@ -19,7 +19,6 @@ import { useLoginContext } from "@/context/login-context";
 import { useLogout } from "@/hooks/use-logout";
 
 export function UserDropdownMenu() {
-
   //context
   const { user } = useLoginContext();
 
@@ -28,7 +27,6 @@ export function UserDropdownMenu() {
 
   //Logout
   const { mutate: logout } = useLogout();
-
 
   return (
     <>
@@ -44,7 +42,6 @@ export function UserDropdownMenu() {
             <Button variant="secondary">SIGNUP</Button>
           </Link>
         </div>
-
       ) : (
         <DropdownMenu>
           {/* Trigger button with user icon */}
@@ -57,18 +54,12 @@ export function UserDropdownMenu() {
           </DropdownMenuTrigger>
 
           {/* Dropdown content */}
-          <DropdownMenuContent
-            className="w-56"
-            align="end"
-          >
-
+          <DropdownMenuContent className="w-56" align="end">
             {/* User information section */}
             <DropdownMenuLabel className="font-normal">
               <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none">{user?.firstName}</p>
-                <p className="text-xs leading-none text-muted-foreground">
-                  {user?.email}
-                </p>
+                <p className="text-sm leading-none font-medium">{user?.firstName}</p>
+                <p className="text-muted-foreground text-xs leading-none">{user?.email}</p>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
@@ -77,14 +68,8 @@ export function UserDropdownMenu() {
             {userMenuItems.map((item) => {
               const IconComponent = item.icon;
               return (
-                <DropdownMenuItem
-                  key={item.name}
-                  asChild
-                >
-                  <Link
-                    to={item.href}
-                    className="flex items-center w-full"
-                  >
+                <DropdownMenuItem key={item.name} asChild>
+                  <Link to={item.href} className="flex w-full items-center">
                     <IconComponent className="mr-2 h-4 w-4" />
                     <span>{t(item.name)}</span>
                   </Link>
@@ -106,13 +91,13 @@ export function UserDropdownMenu() {
 
             {/*logout*/}
             <Separator className="my-2" />
-            <DropdownMenuItem onClick={() => logout()} className="cursor-pointer ">
+            <DropdownMenuItem onClick={() => logout()} className="cursor-pointer">
               <LogOut className="me-2 size-4" />
-              <span>{t('logout')}</span>
+              <span>{t("logout")}</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
-        </DropdownMenu>)}
+        </DropdownMenu>
+      )}
     </>
-
   );
 }
