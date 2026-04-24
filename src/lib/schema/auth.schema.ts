@@ -70,10 +70,10 @@ function useRegistrationSchema() {
         message: t("gender-message"),
       }),
       height: z.number().min(50, { message: t("height-message") }),
-      weight: weightSchema,
+      weight: weightSchema(t),
       age: z.number().min(12, { message: "Age must be at least 12" }),
-      goal: goalSchema,
-      activityLevel: levelSchema,
+      goal: goalSchema(t),
+      activityLevel: levelSchema(t),
     })
     .refine((data) => data.password === data.rePassword, {
       path: ["rePassword"],

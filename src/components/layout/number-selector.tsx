@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { cn } from "@/lib/utils";
 
@@ -25,41 +25,55 @@ export function NumberCarouselSelector({
 }: NumberCarouselSelectorProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "center",
-    containScroll: "trimSnaps",
     loop: false,
+    skipSnaps: false,
+    containScroll: false,
   });
 
   const [selectedValue, setSelectedValue] = useState(defaultValue);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   // Generate array of values
-  const values: number[] = [];
-  for (let i = min; i <= max; i += step) {
-    values.push(i);
-  }
+  const values = useMemo(() => {
+    const arr: number[] = [];
+    for (let i = min; i <= max; i += step) {
+      arr.push(i);
+    }
+    return arr;
+  }, [min, max, step]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
-    const selectedIndex = emblaApi.selectedScrollSnap();
-    const newValue = values[selectedIndex];
-    setSelectedValue(newValue);
-    onChange?.(newValue);
+    const index = emblaApi.selectedScrollSnap();
+    setSelectedIndex(index);
+    const newValue = values[index];
+    if (newValue !== undefined) {
+      setSelectedValue(newValue);
+      onChange?.(newValue);
+    }
   }, [emblaApi, values, onChange]);
 
+  // Initialization effect
   useEffect(() => {
     if (!emblaApi) return;
-
-    emblaApi.on("select", onSelect);
-
     const initialIndex = values.findIndex((value) => value === defaultValue);
     if (initialIndex !== -1) {
       emblaApi.scrollTo(initialIndex, true);
+      setSelectedIndex(initialIndex);
       setSelectedValue(defaultValue);
     }
+  }, [emblaApi, values, defaultValue]); // Only run when these change
 
+  // Event listeners effect
+  useEffect(() => {
+    if (!emblaApi) return;
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
     return () => {
       emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
     };
-  }, [emblaApi, values, defaultValue, onSelect]);
+  }, [emblaApi, onSelect]);
 
   return (
     <div className={cn("w-full max-w-sm mx-auto", className)}>
@@ -70,26 +84,26 @@ export function NumberCarouselSelector({
 
       {/* Carousel Container */}
       <div className="relative">
-        <div className="overflow-hidden" ref={emblaRef}>
+        <div className="overflow-hidden cursor-pointer" ref={emblaRef}>
           <div className="flex">
             {values.map((value, index) => {
-              const selectedIndex = emblaApi?.selectedScrollSnap() ?? 0;
               const distance = Math.abs(index - selectedIndex);
 
               // Styles based on distance from center
-              let styleClass = "text-foreground/20 font-normal scale-90";
+              let styleClass = "text-white/10 font-normal scale-90";
               if (distance === 0) {
-                styleClass = "text-foreground font-bold scale-125";
+                styleClass = "text-white font-bold scale-125";
               } else if (distance === 1) {
-                styleClass = "text-foreground/60 font-semibold scale-105";
+                styleClass = "text-white/60 font-semibold scale-105";
               } else if (distance === 2) {
-                styleClass = "text-foreground/40 font-medium scale-95";
+                styleClass = "text-white/30 font-medium scale-95";
               }
 
               return (
                 <div
                   key={value}
-                  className="flex-[0_0_20%] min-w-0 text-center py-4"
+                  className="flex-[0_0_20%] min-w-0 text-center py-4 select-none"
+                  onClick={() => emblaApi?.scrollTo(index)}
                 >
                   <span
                     className={cn(

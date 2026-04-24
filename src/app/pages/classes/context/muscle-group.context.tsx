@@ -25,7 +25,7 @@ export default function MuscleGroupProvider({ children }: { children: React.Reac
   // locale
   const locale = useLocale();
 
-  const [muscleGroupId, setMuscleGroupId] = useState<string>("67c79f3526895f87ce0aa96f");
+  const [muscleGroupId, setMuscleGroupId] = useState<string>("");
 
   // fetch muscle group by id
   const {
@@ -35,6 +35,7 @@ export default function MuscleGroupProvider({ children }: { children: React.Reac
   } = useQuery<MusclesByGroup>({
     queryKey: [`muscleGroup/${muscleGroupId}`],
     queryFn: async () => await getMuscleGroup(muscleGroupId, locale),
+    enabled: !!muscleGroupId,
   });
 
   return (
