@@ -2,7 +2,7 @@ import { getMusclesGroup } from "@/lib/api/workouts.api";
 import { useQuery } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "use-intl";
 import { musclesGroupContext } from "../context/muscle-group.context";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 export default function useNavbar() {
   // muscle group context
@@ -21,11 +21,16 @@ export default function useNavbar() {
     // fetch group
     queryFn: async () => {
       const response = await getMusclesGroup(locale);
-
-      if (!("error" in response)) setMuscleGroupId(response.musclesGroup[0]._id);
       return response;
     },
   });
+
+  // Set default selected group when data is loaded
+  useEffect(() => {
+    if (data && !("error" in data) && data.musclesGroup?.length > 0 && !muscleGroupId) {
+      setMuscleGroupId(data.musclesGroup[0]._id);
+    }
+  }, [data, muscleGroupId, setMuscleGroupId]);
 
   //  muscles group
   let groups: MuscleGroup[] = [];
